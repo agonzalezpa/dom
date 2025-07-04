@@ -929,3 +929,43 @@ footer {
 .pulse {
     animation: pulse 2s infinite;
 }
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(0, 255, 136, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(0, 255, 136, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(0, 255, 136, 0);
+    }
+}
+
+
+
+.schedule-button {
+    background: var(--neon-green);
+    color: var(--primary-bg) !important;
+    padding: 8px 15px;
+    border-radius: 4px;
+    font-weight: 600;
+    transition: var(--transition);
+    animation: pulse 2s infinite;
+}
+
+.schedule-button:hover {
+    background: var(--electric-blue);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 243, 255, 0.3);
+    animation: none;
+}
+
+.desktop-menu .schedule-button::after {
+    display: none;
+}
+
+.mobile-menu .schedule-button {
+    display: inline-block;
+    margin-top: 15px;
+}
