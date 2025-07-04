@@ -1,0 +1,39 @@
+/* Code animation effects for hero section */
+.code-animation-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.code-line {
+  position: absolute;
+  font-family: 'Fira Code', monospace;
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.1);
+  white-space: nowrap;
+  user-select: none;
+  animation: codeFlow 25s linear infinite;
+}
+
+@keyframes codeFlow {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.15;
+  }
+  90% {
+    opacity: 0.15;
+  }
+  100% {
+    transform: translateY(150vh);
+    opacity: 0;
+  }
+}
+

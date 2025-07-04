@@ -1,0 +1,44 @@
+/* New file for hero section specific styles */
+.hero-content h1 {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+}
+
+.hero-title-line {
+  display: block;
+  overflow: hidden;
+}
+
+.typing-part {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.second-line .typing-part {
+  color: var(--neon-green);
+}
+
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: clamp(1.8rem, 6vw, 2.5rem);
+    text-align: center;
+  }
+  
+  .hero-content p {
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-content h1 {
+    font-size: 1.7rem;
+  }
+  
+  .hero-content .highlight {
+    font-size: 1.4rem;
+  }
+}

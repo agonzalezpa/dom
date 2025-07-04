@@ -1,0 +1,268 @@
+/* Styles for the Testimonial Section with 3D Tablet Container */
+
+#testimonios {
+    position: relative; /* For positioning the 3D container */
+    padding: 100px 0; /* Ensure section padding is maintained */
+    /*background-color: var(--secondary-bg);  Consistent background color */
+}
+
+.testimonial-3d-container {
+    position: relative;
+    width: 90%;
+    max-width: 1200px; /* Increased max width for horizontal tablet */
+    margin: 30px auto;
+    perspective: 1200px; /* Slightly increased perspective */
+    padding: 20px;
+    display: flex; /* Center content horizontally */
+    justify-content: center; /* Center content horizontally */
+}
+
+.testimonial-device {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 aspect ratio for horizontal tablet */
+    background: #2a2a2a; /* Darker device background */
+    border-radius: 20px; /* More rounded corners for tablet */
+    box-shadow:
+        0 10px 30px rgba(0,0,0,0.3), /* Main shadow */
+        inset 0 0 15px rgba(0,0,0,0.4); /* Inner shadow for depth */
+    transform-style: preserve-3d;
+    transition: transform 0.5s ease-out;
+    /*transform: rotateX(5deg) rotateY(5deg);  Adjusted rotation for tablet */
+    border: 10px solid #1a1a1a; /* Bezel color */
+    box-sizing: border-box; /* Include border in element's total width and height */
+}
+
+.testimonial-device:hover {
+    transform: rotateX(10deg) rotateY(10deg) translateY(-10px); /* Slight lift on hover */
+}
+
+.device-screen {
+    position: absolute;
+    top: 15px; /* Adjust to account for bezel */
+    left: 15px; /* Adjust to account for bezel */
+    right: 15px; /* Adjust to account for bezel */
+    bottom: 15px; /* Adjusted bottom to make space below screen */
+    background: var(--primary-bg); /* Screen background to primary background */
+    border-radius: 10px;
+    overflow: hidden; /* Clip content to screen */
+    padding: 25px; /* Increased padding in screen */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.8); /* Deeper inner shadow for screen */
+}
+
+.testimonial-item {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    visibility: hidden;
+    transition: opacity 1s ease, visibility 1s step-end;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 50px; /* Adjusted padding inside testimonial item for horizontal layout */
+    text-align: center;
+}
+
+.testimonial-item.active {
+    opacity: 1;
+    visibility: visible;
+    position: relative;
+    transition: opacity 1s ease, visibility 1s step-start;
+}
+
+.testimonial-quote {
+    font-size: 1.2rem; /* Slightly larger quote size */
+    line-height: 1.6; /* Adjusted line height */
+    margin-bottom: 20px; /* More space below quote */
+    color: var(--white);
+    font-style: italic; /* Italic style for quotes */
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center author info */
+    flex-direction: column; /* Stack author info vertically */
+}
+
+.client-logo {
+    width: 60px; /* Larger logo */
+    height: 30px; /* Larger logo */
+    margin-bottom: 15px; /* More space below logo */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 5px; /* Slightly more rounded logo */
+    padding: 7px; /* Adjusted padding */
+}
+
+.client-logo svg {
+    width: 100%;
+    height: auto;
+}
+
+.author-info h4 {
+    font-size: 1rem; /* Slightly larger author name */
+    margin-bottom: 5px;
+}
+
+.author-info p {
+    font-size: 0.9rem; /* Slightly larger position text */
+    color: var(--text-gray);
+    margin: 0;
+}
+
+.testimonial-navigation {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+    z-index: 10;
+}
+
+.testimonial-nav-button {
+    background: rgba(0, 255, 136, 0.2);
+    border: 1px solid rgba(0, 255, 136, 0.3);
+    color: #fff;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.testimonial-nav-button:hover {
+    background: rgba(0, 255, 136, 0.4);
+    transform: translateY(-2px);
+}
+
+.testimonial-nav-button svg {
+    width: 20px;
+    height: 20px;
+    stroke: #fff;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 1024px) {
+    .testimonial-3d-container {
+        max-width: 700px; /* Adjusted max width for smaller tablets */
+    }
+    .testimonial-item {
+        padding: 0 30px; /* Adjusted padding inside testimonial item */
+    }
+}
+
+@media (max-width: 768px) {
+    #testimonios {
+        padding: 80px 0; /* Adjust section padding for smaller screens */
+    }
+    .testimonial-3d-container {
+        width: 95%;
+        max-width: 500px; /* Further reduced max width for smaller tablets */
+        perspective: 800px; /* Reduced perspective on smaller screens */
+    }
+    .testimonial-device {
+        /* transform: rotateX(10deg) rotateY(10deg); /* Less 3D effect on smaller screens */
+        border-radius: 15px; /* Less rounded corners on smaller screens */
+        border-width: 8px; /* Smaller bezel */
+    }
+    .testimonial-device:hover {
+        transform: rotateX(10deg) rotateY(10deg) translateY(-5px);
+    }
+    .device-screen {
+        padding: 20px; /* Adjust screen padding */
+        top: 12px; /* Adjust for smaller bezel */
+        left: 12px; /* Adjust for smaller bezel */
+        right: 12px; /* Adjust for smaller bezel */
+        bottom: 12px; /* Adjusted bottom space */
+        border-radius: 8px; /* Smaller screen corners */
+    }
+    .testimonial-item {
+        padding: 0 20px; /* Further reduced padding for smaller screens */
+    }
+    .testimonial-quote {
+        font-size: 1.1rem; /* Slightly smaller quote font */
+        margin-bottom: 15px; /* Adjust spacing */
+    }
+    .client-logo {
+        width: 50px; /* Smaller logo */
+        height: 25px; /* Smaller logo */
+        margin-bottom: 10px; /* Adjust logo spacing */
+        padding: 5px; /* Adjust logo padding */
+        border-radius: 4px; /* Smaller logo corners */
+    }
+    .author-info h4 {
+        font-size: 0.9rem; /* Adjust author name font */
+    }
+    .author-info p {
+        font-size: 0.8rem; /* Adjust position font */
+    }
+    .testimonial-nav-button {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .testimonial-nav-button svg {
+        width: 16px;
+        height: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    #testimonios {
+        padding: 30px 0; /* Further reduce section padding for mobile */
+    }
+    .testimonial-3d-container {
+        max-width: 150%; /* Take up more width on very small screens */
+        perspective: 600px; /* Even less perspective on mobile */
+    }
+    .testimonial-device {
+         /*transform: rotateX(5deg) rotateY(5deg); /* Minimal 3D effect on mobile */
+        border-radius: 10px; /* Even smaller corners on mobile */
+        border-width: 6px; /* Even smaller bezel on mobile */
+    }
+    .testimonial-device:hover {
+        transform: rotateX(5deg) rotateY(5deg) translateY(-3px);
+    }
+    .device-screen {
+        padding: 15px; /* Further reduce screen padding */
+        top: 10px; /* Adjust for very small bezel */
+        left: 10px; /* Adjust for very small bezel */
+        right: 10px; /* Adjust for very small bezel */
+        bottom: 10px; /* Adjusted bottom space for mobile */
+        border-radius: 6px; /* Mobile screen corners */
+    }
+    .testimonial-item {
+        padding: 0 10px; /* Further reduced padding for mobile */
+    }
+    .testimonial-quote {
+        font-size: 1rem; /* Even smaller quote font on mobile */
+        line-height: 1.4; /* Adjust line height for mobile */
+    }
+    .client-logo {
+        width: 40px; /* Even smaller logo on mobile */
+        height: 20px; /* Even smaller logo on mobile */
+    }
+    .author-info h4 {
+        font-size: 0.85rem; /* Even smaller author name font on mobile */
+    }
+    .author-info p {
+        font-size: 0.75rem; /* Even smaller position font on mobile */
+    }
+}

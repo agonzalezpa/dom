@@ -1,0 +1,428 @@
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="DOM SRL - Desarrollo de software empresarial, Odoo ERP, sistemas logística, soluciones multiplataforma para empresas innovadoras">
+    <meta name="keywords" content="desarrollo software empresarial, Odoo ERP, sistemas logística, APIs, microservicios, cloud solutions">
+    <title>DOM SRL | Software Inteligente para Empresas</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@7.2.96/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="code-animation.css">
+    <link rel="stylesheet" href="eye-animation.css">
+    <link rel="stylesheet" href="hero-styles.css">
+    <link rel="stylesheet" href="eye-hover.css">
+   <!-- <link rel="stylesheet" href="testimonial-section.css">-->
+    <link rel="stylesheet" href="team-section.css">
+    <script type="importmap">
+        {
+            "imports": {
+                "particles.js": "https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js",
+                "aos": "https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js",
+                "scrollreveal": "https://cdn.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js"
+            }
+        }
+    </script>
+</head>
+<body>
+   
+
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="logo.png" alt="DOM Logo" width="120">
+            </div>
+            <nav>
+                <ul class="desktop-menu">
+                    <li><a href="#servicios" data-lang="nav-services">Servicios</a></li>
+                    <li><a href="#industrias" data-lang="nav-industries">Industrias</a></li>
+                   <!-- <li><a href="#testimonios" data-lang="nav-testimonials">Testimonios</a></li> -->
+                    <li><a href="#contacto" data-lang="nav-contact">Contacto</a></li>
+                    <li class="language-selector">
+                        <button id="es-btn" class="active">ES</button> | 
+                        <button id="en-btn">EN</button>
+                    </li>
+                </ul>
+                <div class="mobile-menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+        <div class="mobile-menu">
+            <ul>
+                <li><a href="#servicios" data-lang="nav-services">Servicios</a></li>
+                <li><a href="#industrias" data-lang="nav-industries">Industrias</a></li>
+                 <!--<li><a href="#testimonios" data-lang="nav-testimonials">Testimonios</a></li> -->
+                <li><a href="#contacto" data-lang="nav-contact">Contacto</a></li>
+                <li class="language-selector-mobile">
+                    <button id="es-btn-mobile" class="active">ES</button> | 
+                    <button id="en-btn-mobile">EN</button>
+                </li>
+            </ul>
+        </div>
+        <!-- Clarity tracking code for https://dom0125.com/ -->
+<script>
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i+"?ref=bwt";
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "rxjx65h4ze");
+</script>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div id="particles-js"></div>
+        <div class="container">
+            <div class="hero-content" data-aos="fade-up">
+                <h1>
+                    <div class="hero-title-line">
+                        <span class="typing-part" data-lang="hero-title-1">Redefiniendo los límites:</span>
+                    </div>
+                    <div class="hero-title-line">
+                        <span class="highlight typing-part" data-lang="hero-title-2">Software que Transforma</span>
+                    </div>
+                </h1>
+                <p data-lang="hero-subtitle">Somos un equipo multidisciplinario de expertos en tecnología, diseño y estrategia empresarial, dedicados a ofrecer soluciones que impulsen la innovación y la eficiencia en tu negocio</p>
+                <a href="#contacto" class="cta-button" data-lang="hero-cta">
+                    <span>Haz crecer tu negocio</span>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M14 5L21 12M21 12L14 19M21 12H3" stroke="#0A192F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+        <div class="hero-tech-lines"></div>
+        <script src="code-animation.js"></script>
+        <script src="eye-animation.js"></script>
+        <script src="typing-animation.js"></script>
+    </section>
+  
+    <!-- Services Section -->
+    <section id="servicios" class="section-padding">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 data-lang="services-title">Servicios Destacados</h2>
+                <div class="accent-line"></div>
+            </div>
+            <div class="services-grid">
+                <!-- Service 1 -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-icon">
+                        <svg width="50" height="50" viewBox="0 0 24 24" fill="none">
+                            <path d="M8 3L2 9L8 15M16 3L22 9L16 15M21 12H3" stroke="#00FF88" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 data-lang="service-1-title">Software a la Medida</h3>
+                    <p data-lang="service-1-desc">Soluciones personalizadas para web, móvil y escritorio que se adaptan a tus procesos empresariales únicos.</p>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-icon">
+                        <svg width="50" height="50" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#00F3FF" stroke-width="2"/>
+                            <path d="M8 14C8 14 9.5 16 12 16C14.5 16 16 14 16 14M9 9H9.01M15 9H15.01" stroke="#00F3FF" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3 data-lang="service-2-title">Multiplataforma</h3>
+                    <p data-lang="service-2-desc">Aplicaciones que funcionan en iOS, Android, Web y Cloud, ofreciendo experiencia consistente en todos los dispositivos.</p>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-icon">
+                        <svg width="50" height="50" viewBox="0 0 24 24" fill="none">
+                            <path d="M21 12L9 12M21 12L14 19M21 12H3" stroke="#00FF88" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 data-lang="service-3-title">Odoo ERP</h3>
+                    <p data-lang="service-3-desc">Implantación, migración y soporte especializado para gestionar todos los aspectos de tu empresa en un solo sistema.</p>
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="service-icon">
+                        <svg width="50" height="50" viewBox="0 0 24 24" fill="none">
+                            <path d="M8 19L3 14M3 14L8 9M3 14H16.5C18.9853 14 21 11.9853 21 9.5V9.5C21 7.01472 18.9853 5 16.5 5H12" stroke="#00F3FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 data-lang="service-4-title">Community Manager</h3>
+                    <p data-lang="service-4-desc">Gestionamos y potenciamos tu presencia en redes sociales para conectar con tu audiencia, aumentar engagement y fortalecer tu marca. Creamos contenido estratégico, interactuamos con tu comunidad y analizamos resultados.</p>
+                </div>
+                
+                <!-- Service 5 -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-icon">
+                        <svg width="50" height="50" viewBox="0 0 24 24" fill="none">
+                            <path d="M4 6H20M4 12H12M4 18H20" stroke="#00FF88" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 data-lang="service-5-title">APIs y Microservicios</h3>
+                    <p data-lang="service-5-desc">Integración de sistemas y desarrollo de arquitecturas escalables que conectan todas tus plataformas empresariales.</p>
+                </div>
+                
+                <!-- Service 6 -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-icon">
+                        <svg width="50" height="50" viewBox="0 0 24 24" fill="none">
+                            <path d="M3 9L12 2L21 9V20C21 20.5304 20.7893 21.0391 20.4142 21.4142C20.0391 21.7893 19.5304 22 19 22H5C4.46957 22 3.96086 21.7893 3.58579 21.4142C3.21071 21.0391 3 20.5304 3 20V9Z" stroke="#00F3FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M9 22V12H15V22" stroke="#00F3FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 data-lang="service-6-title">Cloud Solutions</h3>
+                    <p data-lang="service-6-desc">Implementación y administración de servicios en AWS, Azure y Google Cloud para maximizar rendimiento y seguridad.</p>
+                </div>
+                
+                <!-- Service 7 -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-icon">
+                        <svg width="50" height="50" viewBox="0 0 24 24" fill="none">
+                            <rect x="3" y="3" width="18" height="18" rx="2" stroke="#00FF88" stroke-width="2"/>
+                            <circle cx="8.5" cy="8.5" r="1.5" fill="#00FF88"/>
+                            <circle cx="15.5" cy="8.5" r="1.5" fill="#00FF88"/>
+                            <path d="M8.5 15.5C8.5 15.5 10 17 12 17C14 17 15.5 15.5 15.5 15.5" stroke="#00FF88" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3 data-lang="service-7-title">Diseño UI/UX</h3>
+                    <p data-lang="service-7-desc">Interfaces centradas en usuarios que combinan estética con funcionalidad para mejorar la experiencia y aumentar la productividad.</p>
+                </div>
+                
+                <!-- Service 8 -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="service-icon">
+                        <svg width="50" height="50" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 2L3 7L12 12L21 7L12 2Z" stroke="#00F3FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M3 17L12 22L21 17" stroke="#00F3FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M3 12L12 17L21 12" stroke="#00F3FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 data-lang="service-8-title">Consultoría Tecnológica</h3>
+                    <p data-lang="service-8-desc">Roadmaps estratégicos, auditorías de sistemas y asesoramiento para transformación digital en todas las áreas de tu negocio.</p>
+                </div>
+                
+                <!-- Service 9 (AI) -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-icon">
+                        <svg width="50" height="50" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2Z" stroke="#00FF88" stroke-width="2"/>
+                            <path d="M9 12C9 10.3431 10.3431 9 12 9C13.6569 9 15 10.3431 15 12C15 13.6569 13.6569 15 12 15" stroke="#00FF88" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M12 15V18" stroke="#00FF88" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M12 7V6" stroke="#00FF88" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3 data-lang="service-9-title">Inteligencia Artificial</h3>
+                    <p data-lang="service-9-desc">Sistemas integrados con IA, chatbots inteligentes, análisis predictivo y automatización de procesos mediante aprendizaje automático.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Industries Section -->
+    <section id="industrias" class="section-padding ">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 data-lang="industries-title">Impulsamos Sectores Clave</h2>
+                <div class="accent-line"></div>
+            </div>
+            <div class="industry-animation-container">
+                <!-- Content will be dynamically generated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section 
+    <section id="testimonios" class="section-padding">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 data-lang="testimonials-title">Lo Que Dicen Nuestros Clientes</h2>
+                <div class="accent-line"></div>
+            </div>
+          <br>
+            <div class="testimonial-3d-container" data-aos="fade-up">
+                <div class="testimonial-device">
+                    <div class="device-screen">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>-->
+    <!-- Team Section-->
+    <section id="equipo" class="section-padding team-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 data-lang="team-title">Nuestro Equipo Directivo</h2>
+                <div class="accent-line"></div>
+            </div>
+          <br>
+            <div class="team-grid">
+                
+                <div class="team-member" data-aos="fade-up" data-aos-delay="100">
+                    <div class="team-photo-container">
+                        <img src="adrian.png" alt="Adrian" class="team-photo">
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Adrian González</h3>
+                        <p class="team-position">CEO</p>
+                    </div>
+                </div>
+                
+               
+                <div class="team-member" data-aos="fade-up" data-aos-delay="200">
+                    <div class="team-photo-container">
+                        <img src="douglas.png" alt="Douglas" class="team-photo">
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Douglas Tamayo</h3>
+                        <p class="team-position" data-lang="director-negocio">Director de Negocios</p>
+                    </div>
+                </div>
+                
+                
+                <div class="team-member" data-aos="fade-up" data-aos-delay="300">
+                    <div class="team-photo-container">
+                        <img src="odelkys.png" alt="Odelkys Iglesias" class="team-photo">
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Odelkys Iglesias</h3>
+                        <p class="team-position" data-lang="ID-director">Director I+D</p>
+                    </div>
+                </div>
+                
+               
+                <div class="team-member" data-aos="fade-up" data-aos-delay="400">
+                    <div class="team-photo-container">
+                        <img src="gongora.png" alt="Luis Gongora" class="team-photo">
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Luis Góngora</h3>
+                        <p class="team-position" data-lang="commercial-director">Director Comercial</p>
+                    </div>
+                </div>
+                
+               
+                <div class="team-member" data-aos="fade-up" data-aos-delay="500">
+                    <div class="team-photo-container">
+                        <img src="giselle.png" alt="Giselle" class="team-photo">
+                    </div>
+                    <div class="team-info">
+                        <h3 class="team-name">Giselle Fernández</h3>
+                        <p class="team-position" data-lang="marketing-director">Director Marketing</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> 
+
+    <!-- Contact Form Section -->
+    <section id="contacto" class="section-padding dark-bg">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 data-lang="contact-title">Hablemos sobre tu Proyecto</h2>
+                <div class="accent-line"></div>
+            </div>
+          <br>
+            <div class="contact-content">
+                <div class="contact-info" data-aos="fade-right">
+                    <div class="contact-detail">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M3 5C3 3.89543 3.89543 3 5 3H8.27924C8.70967 3 9.09181 3.27543 9.22792 3.68377L10.7257 8.17721C10.8831 8.64932 10.6694 9.16531 10.2243 9.38787L7.96701 10.5165C9.06925 12.9612 11.0388 14.9308 13.4835 16.033L14.6121 13.7757C14.8347 13.3306 15.3507 13.1169 15.8228 13.2743L20.3162 14.7721C20.7246 14.9082 21 15.2903 21 15.7208V19C21 20.1046 20.1046 21 19 21H18C9.71573 21 3 14.2843 3 6V5Z" stroke="#00FF88" stroke-width="2"/>
+                        </svg>
+                        <div>
+                            <h4 data-lang="contact-phone">WhatsApp</h4>
+                            <p><a target="_blank" href="https://wa.me/+15793810079">+1 (579) 381-0079</p></a>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M3 9L12 2L21 9V20C21 20.5304 20.7893 21.0391 20.4142 21.4142C20.0391 21.7893 19.5304 22 19 22H5C4.46957 22 3.96086 21.7893 3.58579 21.4142C3.21071 21.0391 3 20.5304 3 20V9Z" stroke="#00FF88" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M9 22V12H15V22" stroke="#00FF88" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <div>
+                            <h4 data-lang="contact-email">Email</h4>
+                            <p><a href="mailto:info@dom0125.com"   target="_blank"  class="__cf_email__" data-cfemail="4e2d21203a2f2d3a210e2a21233d3c22602d2123">info@dom0125.com</a></p>
+                        </div>
+                    </div>
+                    <!--<div class="contact-detail">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 13C13.6569 13 15 11.6569 15 10C15 8.34315 13.6569 7 12 7C10.3431 7 9 8.34315 9 10C9 11.6569 10.3431 13 12 13Z" stroke="#00FF88" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M12 22C16 18 20 14.4183 20 10C20 5.58172 16 2 12 2C7.58172 2 4 5.58172 4 10C4 14.4183 8 18 12 22Z" stroke="#00FF88" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <div>
+                            <h4 data-lang="contact-address">Dirección</h4>
+                            <p>Toronto,Canadá</p>
+                        </div>
+                    </div>-->
+                </div>
+                <div class="contact-form" data-aos="fade-left">
+                    <form id="contactForm" action="process.php" method="POST">
+                        <div class="form-group">
+                            <label for="name" data-lang="contact-name">Nombre</label>
+                            <input type="text" id="name" name="name" required>
+                            <div class="error-message"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" data-lang="contact-email-field">Correo</label>
+                            <input type="email" id="email" name="email" required>
+                            <div class="error-message"></div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="company" data-lang="contact-company">Empresa</label>
+                                <input type="text" id="company" name="company">
+                                <div class="error-message"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone" data-lang="contact-phone-field">Teléfono</label>
+                                <input type="tel" id="phone" name="phone">
+                                <div class="error-message"></div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="message" data-lang="contact-message">Mensaje</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                            <div class="error-message"></div>
+                        </div>
+                        <button type="submit" class="submit-button" data-lang="contact-submit">Enviar Mensaje</button>
+                    </form>
+                    <div id="formResponse" class="form-response"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="logo.png" alt="DOM Logo" width="120">
+                    <p data-lang="footer-tagline">Transformando ideas en soluciones digitales</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p id="footer-copyright" data-lang="footer-copyright"> 2025 DOM. Todos los derechos reservados.</p>
+                <a id="footer-privacy" href="privacy-policy.html" data-lang="footer-privacy">Política de Privacidad</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M18 15L12 9L6 15" stroke="#0A192F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </div>
+ 
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script src="main.js" type="module"></script>
+    <script src="sectors-animation.js" type="module"></script>
+    <script src="team-section.js" type="module"></script>
+</body>
+</html>
