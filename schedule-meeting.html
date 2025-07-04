@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Programa una reunión con el equipo de DOM LLC para discutir tu proyecto">
+    <title>Agendar Reunión | DOM SRL</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <style>
+        .meeting-container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 120px auto 60px;
+            background: rgba(26, 26, 26, 0.5);
+            border-radius: 8px;
+            padding: 40px;
+            min-height: 600px;
+        }
+        
+        .meeting-container h1 {
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+            text-align: center;
+        }
+        
+        .meeting-container p {
+            margin-bottom: 30px;
+            line-height: 1.7;
+            text-align: center;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .calendly-inline-widget {
+            min-width: 320px;
+            height: 700px;
+            background: rgba(10, 25, 47, 0.3);
+            border-radius: 8px;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 20px;
+            background: var(--neon-green);
+            color: var(--primary-bg);
+            border-radius: 4px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .back-link:hover {
+            background: var(--electric-blue);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 243, 255, 0.3);
+        }
+        
+        @media (max-width: 768px) {
+            .meeting-container {
+                padding: 20px;
+                margin-top: 100px;
+            }
+            
+            .meeting-container h1 {
+                font-size: 2rem;
+            }
+            
+            .calendly-inline-widget {
+                height: 600px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="83445181-2da7-463d-b94f-32dc9b2c8ad2-removebg-preview.png" alt="DOM Logo" width="120">
+                </a>
+            </div>
+            <nav>
+                <ul class="desktop-menu">
+                    <li><a href="index.html#servicios">Servicios</a></li>
+                    <li><a href="index.html#industrias">Industrias</a></li>
+                    <li><a href="index.html#testimonios">Testimonios</a></li>
+                    <li><a href="index.html#contacto">Contacto</a></li>
+                    <li><a href="schedule-meeting.html" class="schedule-button">Agendar Reunión</a></li>
+                    <li class="language-selector">
+                        <button id="es-btn" class="active">ES</button> | 
+                        <button id="en-btn">EN</button>
+                    </li>
+                </ul>
+                <div class="mobile-menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+        <div class="mobile-menu">
+            <ul>
+                <li><a href="index.html#servicios">Servicios</a></li>
+                <li><a href="index.html#industrias">Industrias</a></li>
+                <li><a href="index.html#testimonios">Testimonios</a></li>
+                <li><a href="index.html#contacto">Contacto</a></li>
+                <li><a href="schedule-meeting.html" class="schedule-button">Agendar Reunión</a></li>
+                <li class="language-selector-mobile">
+                    <button id="es-btn-mobile" class="active">ES</button> | 
+                    <button id="en-btn-mobile">EN</button>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Meeting Calendar Section -->
+    <div class="meeting-container">
+        <h1 id="meeting-title">Agenda una Reunión con Nuestro Equipo</h1>
+        <p id="meeting-description">Selecciona una fecha y hora conveniente para programar una reunión virtual de 20 minutos con uno de nuestros expertos. Discutiremos tu proyecto y cómo podemos ayudarte a alcanzar tus objetivos.</p>
+        
+        <!-- Calendly inline widget begin -->
+        <div class="calendly-inline-widget" data-url="https://calendly.com/domsrl/20min"></div>
+        <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+        <!-- Calendly inline widget end -->
+        
+        <div style="text-align: center; margin-top: 30px;">
+            <a href="index.html" class="back-link">Volver a la página principal</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="83445181-2da7-463d-b94f-32dc9b2c8ad2-removebg-preview.png" alt="DOM Logo" width="120">
+                    <p>Transformando ideas en soluciones digitales</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p> 2023 DOM. Todos los derechos reservados.</p>
+                <a href="privacy-policy.html">Política de Privacidad</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Mobile menu toggle
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const mobileMenu = document.querySelector('.mobile-menu');
+
+        if (mobileMenuToggle) {
+            mobileMenuToggle.addEventListener('click', function() {
+                mobileMenuToggle.classList.toggle('active');
+                mobileMenu.classList.toggle('active');
+                
+                // Animate hamburger to X
+                const spans = mobileMenuToggle.querySelectorAll('span');
+                if (mobileMenuToggle.classList.contains('active')) {
+                    spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                    spans[1].style.opacity = '0';
+                    spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
+                } else {
+                    spans[0].style.transform = 'none';
+                    spans[1].style.opacity = '1';
+                    spans[2].style.transform = 'none';
+                }
+            });
+        }
+        
+        // Language switcher
+        const esBtn = document.getElementById('es-btn');
+        const enBtn = document.getElementById('en-btn');
+        const esBtnMobile = document.getElementById('es-btn-mobile');
+        const enBtnMobile = document.getElementById('en-btn-mobile');
+        const meetingTitle = document.getElementById('meeting-title');
+        const meetingDescription = document.getElementById('meeting-description');
+        
+        function switchLanguage(lang) {
+            if (lang === 'es') {
+                meetingTitle.textContent = 'Agenda una Reunión con Nuestro Equipo';
+                meetingDescription.textContent = 'Selecciona una fecha y hora conveniente para programar una reunión virtual de 20 minutos con uno de nuestros expertos. Discutiremos tu proyecto y cómo podemos ayudarte a alcanzar tus objetivos ';
+                document.querySelectorAll('.schedule-button').forEach(btn => {
+                    btn.textContent = 'Agendar Reunión';
+                });
+                document.querySelector('.back-link').textContent = 'Volver a la página principal';
+                
+                esBtn.classList.add('active');
+                enBtn.classList.remove('active');
+                esBtnMobile.classList.add('active');
+                enBtnMobile.classList.remove('active');
+            } else {
+                meetingTitle.textContent = 'Schedule a Meeting with Our Team';
+                meetingDescription.textContent = 'Select a convenient date and time to schedule a 20-minute virtual meeting with one of our experts. We will discuss your project and how we can help you achieve yourgoals.';
+                document.querySelectorAll('.schedule-button').forEach(btn => {
+                    btn.textContent = 'Schedule Meeting';
+                });
+                document.querySelector('.back-link').textContent = 'Back to Home Page';
+                
+                esBtn.classList.remove('active');
+                enBtn.classList.add('active');
+                esBtnMobile.classList.remove('active');
+                enBtnMobile.classList.add('active');
+            }
+        }
+        
+        esBtn.addEventListener('click', () => switchLanguage('es'));
+        enBtn.addEventListener('click', () => switchLanguage('en'));
+        esBtnMobile.addEventListener('click', () => switchLanguage('es'));
+        enBtnMobile.addEventListener('click', () => switchLanguage('en'));
+    </script>
+</body>
+</html>
