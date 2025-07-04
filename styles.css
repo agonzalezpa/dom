@@ -48,7 +48,12 @@ section {
     background-color: var(--secondary-bg);
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     color: var(--white);
     font-weight: 600;
     line-height: 1.2;
@@ -120,7 +125,8 @@ header .container {
     align-items: center;
 }
 
-.logo img, .footer-logo img {
+.logo img,
+.footer-logo img {
     max-width: 120px;
     height: auto;
 }
@@ -635,7 +641,8 @@ label {
     color: var(--white);
 }
 
-input, textarea {
+input,
+textarea {
     width: 100%;
     padding: 12px 15px;
     border: 1px solid rgba(204, 214, 246, 0.3);
@@ -646,7 +653,8 @@ input, textarea {
     transition: var(--transition);
 }
 
-input:focus, textarea:focus {
+input:focus,
+textarea:focus {
     outline: none;
     border-color: var(--electric-blue);
     box-shadow: 0 0 0 3px rgba(0, 243, 255, 0.1);
@@ -762,7 +770,8 @@ footer {
     max-width: 300px;
 }
 
-.footer-links h4, .footer-social h4 {
+.footer-links h4,
+.footer-social h4 {
     font-size: 1.2rem;
     margin-bottom: 20px;
 }
@@ -810,7 +819,8 @@ footer {
     border-top: 1px solid rgba(204, 214, 246, 0.1);
 }
 
-.footer-bottom p, .footer-bottom a {
+.footer-bottom p,
+.footer-bottom a {
     font-size: 0.85rem;
     color: var(--text-gray);
 }
@@ -820,11 +830,11 @@ footer {
     .hero-content h1 {
         font-size: 3rem;
     }
-    
+
     .section-header h2 {
         font-size: 2.2rem;
     }
-    
+
     .footer-content {
         grid-template-columns: 1fr;
         gap: 20px;
@@ -832,45 +842,59 @@ footer {
 }
 
 @media (max-width: 768px) {
-    .back-to-top {
-        margin-right: 25px !important; /* Fuerza posición en móviles */
-        bottom: 20px;
-        width: 44px;
-        height: 44px;
+    /* Agrega esto a tu archivo CSS principal o en un <style> en el head */
+   
+    @media (max-width: 768px) {
+        .back-to-top {
+            right: 16px !important;
+            bottom: 16px !important;
+            width: 48px !important;
+            height: 48px !important;
+            min-width: 48px !important;
+            min-height: 48px !important;
+            border-radius: 50% !important;
+            padding: 10px !important;
+        }
+
+        .back-to-top svg {
+            width: 28px !important;
+            height: 28px !important;
+        }
     }
+
     .desktop-menu {
         display: none;
     }
-    
+
     .mobile-menu-toggle {
         display: flex;
     }
-    
+
     .hero-content h1 {
         font-size: 2.5rem;
     }
-    
+
     .hero-content p {
         font-size: 1.1rem;
     }
-    
+
     .section-padding {
         padding: 70px 0;
     }
-    
+
     .section-header h2 {
         font-size: 2rem;
     }
-    
+
     .contact-content {
         grid-template-columns: 1fr;
     }
-    
+
     .footer-content {
         grid-template-columns: 1fr;
         gap: 20px;
     }
-    
+
     .footer-bottom {
         flex-direction: column;
         gap: 15px;
@@ -887,16 +911,16 @@ footer {
     .hero-content h1 {
         font-size: 2rem;
     }
-    
+
     .cta-button {
         width: 100%;
         justify-content: center;
     }
-    
+
     .form-row {
         grid-template-columns: 1fr;
     }
-    
+
     .industries-grid {
         grid-template-columns: 1fr;
     }
@@ -908,6 +932,7 @@ footer {
         opacity: 0;
         transform: translateY(20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -918,9 +943,11 @@ footer {
     0% {
         box-shadow: 0 0 0 0 rgba(0, 255, 136, 0.4);
     }
+
     70% {
         box-shadow: 0 0 0 10px rgba(0, 255, 136, 0);
     }
+
     100% {
         box-shadow: 0 0 0 0 rgba(0, 255, 136, 0);
     }
@@ -934,9 +961,11 @@ footer {
     0% {
         box-shadow: 0 0 0 0 rgba(0, 255, 136, 0.4);
     }
+
     70% {
         box-shadow: 0 0 0 10px rgba(0, 255, 136, 0);
     }
+
     100% {
         box-shadow: 0 0 0 0 rgba(0, 255, 136, 0);
     }
