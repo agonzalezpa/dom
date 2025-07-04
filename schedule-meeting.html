@@ -7,7 +7,7 @@
     <meta name="description" content="Programa una reunión con el equipo de DOM LLC para discutir tu proyecto">
     <title>Agendar Reunión | DOM LLC</title>
     <link rel="stylesheet" href="styles.css">
-     <link rel="icon" type="image/png" href="logo.png">
+    <link rel="icon" type="image/png" href="logo.png">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
     <style>
@@ -18,7 +18,7 @@
             /* background: rgba(26, 26, 26, 0.5); */
             border-radius: 8px;
             padding: 40px;
-           
+
         }
 
         .meeting-container h1 {
@@ -134,8 +134,8 @@
         <div class="calendly-inline-widget"
             data-url="https://calendly.com/domllc/20min?hide_event_type_details=1&hide_gdpr_banner=1&background_color=242020&text_color=f7f7f7&primary_color=62cb47"
             style="min-width:320px;height:700px;"></div>
-        <script type="text/javascript" src="calendy.js" ></script>
-       <!-- <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>  -->
+        <script type="text/javascript" src="calendy.js"></script>
+        <!-- <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>  -->
         <!-- Calendly inline widget end -->
 
         <div style="text-align: center; margin-top: 30px;">
@@ -201,6 +201,7 @@
         const meetingTitle = document.getElementById('meeting-title');
         const meetingDescription = document.getElementById('meeting-description');
 
+        
         function switchLanguage(lang) {
             if (lang === 'es') {
                 meetingTitle.textContent = 'Agenda una Reunión con Nuestro Equipo';
@@ -210,17 +211,39 @@
                 });
                 document.querySelector('.back-link').textContent = 'Volver a la página principal';
 
+                // Cambia los textos del navbar (desktop y mobile)
+                document.querySelectorAll('.desktop-menu a')[0].textContent = 'Servicios';
+                document.querySelectorAll('.desktop-menu a')[1].textContent = 'Industrias';
+                document.querySelectorAll('.desktop-menu a')[2].textContent = 'Testimonios';
+                document.querySelectorAll('.desktop-menu a')[3].textContent = 'Contacto';
+
+                document.querySelectorAll('.mobile-menu a')[0].textContent = 'Servicios';
+                document.querySelectorAll('.mobile-menu a')[1].textContent = 'Industrias';
+                document.querySelectorAll('.mobile-menu a')[2].textContent = 'Testimonios';
+                document.querySelectorAll('.mobile-menu a')[3].textContent = 'Contacto';
+
                 esBtn.classList.add('active');
                 enBtn.classList.remove('active');
                 esBtnMobile.classList.add('active');
                 enBtnMobile.classList.remove('active');
             } else {
                 meetingTitle.textContent = 'Schedule a Meeting with Our Team';
-                meetingDescription.textContent = 'Select a convenient date and time to schedule a 20-minute virtual meeting with one of our experts. We will discuss your project and how we can help you achieve yourgoals.';
+                meetingDescription.textContent = 'Select a convenient date and time to schedule a 20-minute virtual meeting with one of our experts. We will discuss your project and how we can help you achieve your goals.';
                 document.querySelectorAll('.schedule-button').forEach(btn => {
                     btn.textContent = '📆 Schedule Meeting';
                 });
                 document.querySelector('.back-link').textContent = 'Back to Home Page';
+
+                // Cambia los textos del navbar (desktop y mobile)
+                document.querySelectorAll('.desktop-menu a')[0].textContent = 'Services';
+                document.querySelectorAll('.desktop-menu a')[1].textContent = 'Industries';
+                document.querySelectorAll('.desktop-menu a')[2].textContent = 'Testimonials';
+                document.querySelectorAll('.desktop-menu a')[3].textContent = 'Contact';
+
+                document.querySelectorAll('.mobile-menu a')[0].textContent = 'Services';
+                document.querySelectorAll('.mobile-menu a')[1].textContent = 'Industries';
+                document.querySelectorAll('.mobile-menu a')[2].textContent = 'Testimonials';
+                document.querySelectorAll('.mobile-menu a')[3].textContent = 'Contact';
 
                 esBtn.classList.remove('active');
                 enBtn.classList.add('active');
@@ -228,6 +251,7 @@
                 enBtnMobile.classList.add('active');
             }
         }
+     
 
         esBtn.addEventListener('click', () => switchLanguage('es'));
         enBtn.addEventListener('click', () => switchLanguage('en'));
