@@ -97,7 +97,7 @@
 
 @media (max-width: 768px) {
   .eye-container {
-    top: 30%;
+    top: 100px;
     right: 5%;
     width: 70px;
     height: 70px;
