@@ -1015,3 +1015,14 @@ footer {
         /* Ajusta este valor según la altura real de tu header móvil */
     }
 }
+.calendly-inline-widget {
+    scrollbar-width: none !important; /* Firefox */
+    -ms-overflow-style: none !important; /* IE 10+ */
+}
+
+/* Chrome, Edge, Safari */
+.calendly-inline-widget::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    background: transparent !important;
+}
