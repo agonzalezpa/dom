@@ -844,7 +844,7 @@ footer {
 
 @media (max-width: 768px) {
     /* Agrega esto a tu archivo CSS principal o en un <style> en el head */
-   
+
     @media (max-width: 768px) {
         .back-to-top {
             right: 16px !important;
@@ -860,6 +860,15 @@ footer {
         .back-to-top svg {
             width: 28px !important;
             height: 28px !important;
+        }
+
+        .calendly-inline-widget {
+            min-width: 0 !important;
+            width: 100% !important;
+            margin: 0 auto !important;
+            border-radius: 8px;
+            height: 600px;
+            box-sizing: border-box;
         }
     }
 
@@ -999,8 +1008,10 @@ footer {
     display: inline-block;
     margin-top: 15px;
 }
+
 @media (max-width: 900px) {
-  #hero {
-    padding-top: 90px; /* Ajusta este valor según la altura real de tu header móvil */
-  }
+    #hero {
+        padding-top: 90px;
+        /* Ajusta este valor según la altura real de tu header móvil */
+    }
 }
