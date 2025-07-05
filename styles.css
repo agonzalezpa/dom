@@ -998,3 +998,8 @@ footer {
     display: inline-block;
     margin-top: 15px;
 }
+@media (max-width: 900px) {
+  #hero {
+    padding-top: 90px; /* Ajusta este valor según la altura real de tu header móvil */
+  }
+}
