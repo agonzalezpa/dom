@@ -5,7 +5,7 @@
   right: 10%;
   width: 120px;
   height: 120px;
-  z-index: 3;
+  z-index: 100000;
 }
 
 .eye {
@@ -101,7 +101,7 @@
     right: 5%;
     width: 70px;
     height: 70px;
-    z-index: 100;
+    z-index: 1000000;
   }
 }
 
