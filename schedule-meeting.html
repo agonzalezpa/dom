@@ -126,7 +126,7 @@
     <div class="meeting-container">
         <h1 id="meeting-title">Agenda una Reunión con Nuestro Equipo</h1>
         <p id="meeting-description">Selecciona una fecha y hora conveniente para programar una reunión virtual de 20
-            minutos con uno de nuestros expertos. Discutiremos tu proyecto y cómo podemos ayudarte a alcanzar tus
+            minutos con uno de nuestros expertos a través de Google Meet. Discutiremos tu proyecto y cómo te ayudaremos a alcanzar tus
             objetivos.</p>
 
         <!-- Calendly inline widget begin -->
@@ -203,7 +203,7 @@
         function switchLanguage(lang) {
             if (lang === 'es') {
                 meetingTitle.textContent = 'Agenda una Reunión con Nuestro Equipo';
-                meetingDescription.textContent = 'Selecciona una fecha y hora conveniente para programar una reunión virtual de 20 minutos con uno de nuestros expertos. Discutiremos tu proyecto y cómo podemos ayudarte a alcanzar tus objetivos ';
+                meetingDescription.textContent = 'Selecciona una fecha y hora conveniente para programar una reunión virtual de 20 minutos con uno de nuestros expertos a través de Google Meet. Discutiremos tu proyecto y cómo podemos ayudarte a alcanzar tus objetivos ';
                 document.querySelectorAll('.schedule-button').forEach(btn => {
                     btn.textContent = '📆 Agendar Reunión';
                 });
@@ -226,7 +226,7 @@
                 enBtnMobile.classList.remove('active');
             } else {
                 meetingTitle.textContent = 'Schedule a Meeting with Our Team';
-                meetingDescription.textContent = 'Select a convenient date and time to schedule a 20-minute virtual meeting with one of our experts. We will discuss your project and how we can help you achieve your goals.';
+                meetingDescription.textContent = 'Select a convenient date and time to schedule a 20-minute virtual meeting with one of our experts via Google Meet. We will discuss your project and how we can help you achieve your goals.';
                 document.querySelectorAll('.schedule-button').forEach(btn => {
                     btn.textContent = '📆 Schedule Meeting';
                 });
