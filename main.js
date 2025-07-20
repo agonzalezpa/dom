@@ -147,6 +147,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         AOS.refresh();
     });
+
     // Animated Counter for Impact Section
     function animateCounter(element, target, duration = 2000) {
         let start = 0;
@@ -415,6 +416,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Testimonials
             'testimonials-title': 'Lo Que Dicen Nuestros Clientes',
+
+            // Global Impact
+            'impact-title': 'Impacto Global en Números',
+            'impact-countries': 'Países con Clientes',
+            'impact-projects': 'Proyectos Ejecutados',
+            'impact-satisfaction': 'Satisfacción del Cliente',
+            'impact-team': 'Profesionales en el Equipo',
+            'impact-years': 'Años de Experiencia',
 
             // Contact
             'contact-title': 'Hablemos sobre tu Proyecto',
