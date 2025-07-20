@@ -1026,3 +1026,55 @@ footer {
     width: 0 !important;
     background: transparent !important;
 }
+
+
+
+/* Puedes mover esto a styles.css **************************************************/
+.highlight-bg {
+    background: linear-gradient(90deg, #0A192F 80%, #00FF88 100%);
+    color: #fff;
+}
+.stats-grid {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+.stat-card {
+    background: rgba(10,25,47,0.85);
+    border-radius: 18px;
+    box-shadow: 0 4px 24px rgba(0,255,136,0.08);
+    padding: 2rem 2.5rem;
+    text-align: center;
+    min-width: 220px;
+    transition: transform 0.3s;
+}
+.stat-card:hover {
+    transform: translateY(-8px) scale(1.04);
+    box-shadow: 0 8px 32px rgba(0,255,136,0.18);
+}
+.stat-icon {
+    margin-bottom: 1rem;
+    animation: pulse 2s infinite;
+}
+@keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1);}
+    50% { opacity: 0.7; transform: scale(1.08);}
+}
+.stat-number {
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: #00FF88;
+    margin-bottom: 0.5rem;
+    letter-spacing: 1px;
+}
+.stat-label {
+    font-size: 1.1rem;
+    color: #fff;
+    opacity: 0.85;
+}
+@media (max-width: 900px) {
+    .stats-grid { flex-direction: column; align-items: center; }
+    .stat-card { min-width: 180px; margin-bottom: 1.5rem; }
+}

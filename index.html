@@ -293,6 +293,53 @@
         </div>
     </section>-->
     <!-- Team Section-->
+    <!-- Sección de Datos Relevantes -->
+    <section id="datos-relevantes" class="section-padding highlight-bg">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 data-lang="key-stats-title">Impacto Global en Números</h2>
+                <div class="accent-line"></div>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-card" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="stat-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none">
+                            <path
+                                d="M12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2Z"
+                                stroke="#00FF88" stroke-width="2" />
+                            <path d="M8 12H16" stroke="#00FF88" stroke-width="2" stroke-linecap="round" />
+                            <path d="M12 8V16" stroke="#00FF88" stroke-width="2" stroke-linecap="round" />
+                        </svg>
+                    </div>
+                    <div class="stat-number" data-count="12">0</div>
+                    <div class="stat-label" data-lang="stat-countries">Países con clientes</div>
+                </div>
+                <div class="stat-card" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="stat-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none">
+                            <path d="M4 17V7a2 2 0 012-2h12a2 2 0 012 2v10" stroke="#00F3FF" stroke-width="2" />
+                            <path d="M9 21h6" stroke="#00F3FF" stroke-width="2" stroke-linecap="round" />
+                            <path d="M12 17v4" stroke="#00F3FF" stroke-width="2" stroke-linecap="round" />
+                        </svg>
+                    </div>
+                    <div class="stat-number" data-count="3500">0</div>
+                    <div class="stat-label" data-lang="stat-projects">Proyectos realizados</div>
+                </div>
+                <div class="stat-card" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="stat-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none">
+                            <circle cx="12" cy="12" r="10" stroke="#00FF88" stroke-width="2" />
+                            <path d="M8 15C8 13.3431 9.34315 12 11 12H13C14.6569 12 16 13.3431 16 15" stroke="#00FF88"
+                                stroke-width="2" />
+                            <circle cx="12" cy="9" r="2" fill="#00FF88" />
+                        </svg>
+                    </div>
+                    <div class="stat-number" data-count="100">0</div>
+                    <div class="stat-label" data-lang="stat-team">Expertos en tecnología</div>
+                </div>
+            </div>
+        </div>
+    </section>
     <section id="equipo" class="section-padding team-section">
         <div class="container">
             <div class="section-header" data-aos="fade-up">
@@ -469,6 +516,29 @@
     <script src="main.js" type="module"></script>
     <script src="sectors-animation.js" type="module"></script>
     <script src="team-section.js" type="module"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            function animateCount(el, target, duration = 1500) {
+                let start = 0;
+                let startTime = null;
+                function updateCount(timestamp) {
+                    if (!startTime) startTime = timestamp;
+                    const progress = Math.min((timestamp - startTime) / duration, 1);
+                    el.textContent = Math.floor(progress * (target - start) + start);
+                    if (progress < 1) {
+                        requestAnimationFrame(updateCount);
+                    } else {
+                        el.textContent = target;
+                    }
+                }
+                requestAnimationFrame(updateCount);
+            }
+            document.querySelectorAll('.stat-number').forEach(el => {
+                const target = parseInt(el.getAttribute('data-count'), 10);
+                animateCount(el, target);
+            });
+        });
+    </script>
 </body>
 <!-- Back to Top Button -->
 <div class="back-to-top">
