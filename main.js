@@ -500,6 +500,14 @@ document.addEventListener('DOMContentLoaded', function () {
             // Testimonials
             'testimonials-title': 'What Our Clients Say',
 
+             // Global Impact
+            'impact-title': 'Global Impact in Numbers',
+            'impact-countries': 'Countries with Clients',
+            'impact-projects': 'Projects Executed',
+            'impact-satisfaction': 'Client Satisfaction',
+            'impact-team': 'Team Professionals',
+            'impact-years': 'Years of Experience',
+
             // Contact
             'contact-title': 'Let\'s Talk About Your Project',
             'contact-phone': 'Phone',
