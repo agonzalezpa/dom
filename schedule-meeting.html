@@ -126,15 +126,16 @@
     <div class="meeting-container">
         <h1 id="meeting-title">Agenda una reunión con nuestro equipo</h1>
         <p id="meeting-description">Selecciona una fecha y hora conveniente para programar una reunión virtual de 20
-            minutos con uno de nuestros expertos a través de Google Meet. Discutiremos tu proyecto y cómo te ayudaremos a alcanzar tus
-            objetivos.</p>
+            minutos con uno de nuestros expertos a través de Google Meet. Discutiremos tu proyecto y cómo te ayudaremos
+            a alcanzar tus
+            objetivos. <span id="visitCount">15</span> Clientes han solicitado esta reunión en la semana.</p>
 
         <!-- Calendly inline widget begin -->
-        <div class="calendly-inline-widget" 
+        <div class="calendly-inline-widget"
             data-url="https://calendly.com/domllc/20min?hide_event_type_details=1&hide_gdpr_banner=1&background_color=242020&text_color=f7f7f7&primary_color=62cb47"
             style="min-width:320px;height:700px;"></div>
         <script type="text/javascript" src="calendy.js"></script>
-      
+
 
         <div style="text-align: center; margin-top: 30px;">
             <a href="index.html" class="back-link">Volver a la página principal</a>
@@ -199,7 +200,7 @@
         const meetingTitle = document.getElementById('meeting-title');
         const meetingDescription = document.getElementById('meeting-description');
 
-        
+
         function switchLanguage(lang) {
             if (lang === 'es') {
                 meetingTitle.textContent = 'Agenda una reunión con nuestro equipo';
@@ -249,12 +250,23 @@
                 enBtnMobile.classList.add('active');
             }
         }
-     
+
 
         esBtn.addEventListener('click', () => switchLanguage('es'));
         enBtn.addEventListener('click', () => switchLanguage('en'));
         esBtnMobile.addEventListener('click', () => switchLanguage('es'));
         enBtnMobile.addEventListener('click', () => switchLanguage('en'));
+    </script>
+    <script>
+        fetch('counter.php')
+            .then(response => response.text())
+            .then(count => {
+                if (count == 0) {
+                    count = 15; // Default value if the counter returns 0
+                } else {
+                    document.getElementById('visitCount').textContent = count;
+                }
+            });
     </script>
 </body>
 
