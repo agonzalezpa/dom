@@ -206,8 +206,9 @@
         function switchLanguage(lang) {
             if (lang === 'es') {
                 meetingTitle.textContent = 'Agenda una reunión con nuestro equipo';
-                visitText.textContent = ' clientes han solicitado reunirse en la semana.';
-                meetingDescription.textContent = 'Selecciona una fecha y hora conveniente para programar una reunión virtual de 20 minutos con uno de nuestros expertos a través de Google Meet. Discutiremos tu proyecto y cómo podemos ayudarte a alcanzar tus objetivos ';
+                meetingDescription.childNodes[0].textContent = 'Selecciona una fecha y hora conveniente para programar una reunión virtual de 20 minutos con uno de nuestros expertos a través de Google Meet. Discutiremos tu proyecto y cómo te ayudaremos a alcanzar tus objetivos. ';
+                visitText.textContent = 'clientes han solicitado reunirse en la semana.';
+
                 document.querySelectorAll('.schedule-button').forEach(btn => {
                     btn.textContent = '📆 Agendar Reunión';
                 });
@@ -230,8 +231,9 @@
                 enBtnMobile.classList.remove('active');
             } else {
                 meetingTitle.textContent = 'Schedule a meeting with our team';
+                meetingDescription.childNodes[0].textContent = 'Select a convenient date and time to schedule a 20-minute virtual meeting with one of our experts via Google Meet. We will discuss your project and how we can help you achieve your goals. ';
                 visitText.textContent = 'clients have requested a meeting this week.';
-                meetingDescription.textContent = 'Select a convenient date and time to schedule a 20-minute virtual meeting with one of our experts via Google Meet. We will discuss your project and how we can help you achieve your goals.';
+
                 document.querySelectorAll('.schedule-button').forEach(btn => {
                     btn.textContent = '📆 Schedule Meeting';
                 });
