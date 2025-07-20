@@ -128,13 +128,14 @@
         <p id="meeting-description">Selecciona una fecha y hora conveniente para programar una reunión virtual de 20
             minutos con uno de nuestros expertos a través de Google Meet. Discutiremos tu proyecto y cómo te ayudaremos
             a alcanzar tus
-            objetivos. <span id="visitCount">...</span> clientes han solicitado esta reunión en la semana.</p>
+            objetivos. <span id="visitCount">...</span><span id="visitText">clientes han solicitado reunirse en la
+                semana.</span></p>
 
-        <!-- Calendly inline widget begin -->
+        <!-- Calendly inline widget begin 
         <div class="calendly-inline-widget"
             data-url="https://calendly.com/domllc/20min?hide_event_type_details=1&hide_gdpr_banner=1&background_color=242020&text_color=f7f7f7&primary_color=62cb47"
             style="min-width:320px;height:700px;"></div>
-        <script type="text/javascript" src="calendy.js"></script>
+        <script type="text/javascript" src="calendy.js"></script>-->
 
 
         <div style="text-align: center; margin-top: 30px;">
@@ -204,6 +205,7 @@
         function switchLanguage(lang) {
             if (lang === 'es') {
                 meetingTitle.textContent = 'Agenda una reunión con nuestro equipo';
+                visitText.textContent = 'clientes han solicitado reunirse en la semana.';
                 meetingDescription.textContent = 'Selecciona una fecha y hora conveniente para programar una reunión virtual de 20 minutos con uno de nuestros expertos a través de Google Meet. Discutiremos tu proyecto y cómo podemos ayudarte a alcanzar tus objetivos ';
                 document.querySelectorAll('.schedule-button').forEach(btn => {
                     btn.textContent = '📆 Agendar Reunión';
@@ -227,6 +229,7 @@
                 enBtnMobile.classList.remove('active');
             } else {
                 meetingTitle.textContent = 'Schedule a meeting with our team';
+                visitText.textContent = 'clients have requested a meeting this week.';
                 meetingDescription.textContent = 'Select a convenient date and time to schedule a 20-minute virtual meeting with one of our experts via Google Meet. We will discuss your project and how we can help you achieve your goals.';
                 document.querySelectorAll('.schedule-button').forEach(btn => {
                     btn.textContent = '📆 Schedule Meeting';
