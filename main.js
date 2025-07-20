@@ -147,7 +147,51 @@ document.addEventListener('DOMContentLoaded', function () {
 
         AOS.refresh();
     });
+    // Animated Counter for Impact Section
+    function animateCounter(element, target, duration = 2000) {
+        let start = 0;
+        const startTime = performance.now();
 
+        function updateCounter(currentTime) {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+
+            // Easing function for smooth animation
+            const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+            const current = Math.floor(start + (target - start) * easeOutQuart);
+
+            element.textContent = current.toLocaleString();
+
+            if (progress < 1) {
+                requestAnimationFrame(updateCounter);
+            } else {
+                element.textContent = target.toLocaleString();
+            }
+        }
+
+        requestAnimationFrame(updateCounter);
+    }
+
+    // Initialize counters when impact section comes into view
+    const impactSection = document.getElementById('impacto-global');
+    if (impactSection) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const statNumbers = entry.target.querySelectorAll('.stat-number');
+                    statNumbers.forEach(stat => {
+                        const target = parseInt(stat.getAttribute('data-target'));
+                        animateCounter(stat, target);
+                    });
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.3
+        });
+
+        observer.observe(impactSection);
+    }
     // Mobile Menu Toggle
     const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
     const mobileMenu = document.querySelector('.mobile-menu');
@@ -198,8 +242,8 @@ document.addEventListener('DOMContentLoaded', function () {
         const backToTopButton = document.querySelector('.back-to-top');
         if (window.scrollY > 500) {
             backToTopButton.classList.add('visible');
-             // Ajuste para móviles
-             if (window.innerWidth <= 768) {
+            // Ajuste para móviles
+            if (window.innerWidth <= 768) {
                 backToTopButton.style.right = '25px'; // Posición fija para móviles
             }
         } else {
@@ -490,18 +534,18 @@ document.addEventListener('DOMContentLoaded', function () {
     const currentYear = new Date().getFullYear();
     const footerText = currentLanguage === 'es' ? `© ${currentYear} DOM. Todos los derechos reservados.` : `© ${currentYear} DOM. All rights reserved.`;
     document.getElementById('footer-copyright').textContent = footerText;
-// Function to update privacy policy link based on language
-function updatePrivacyPolicyLink() {
-    const privacyLink = document.getElementById('footer-privacy');
-    if (currentLanguage === 'en') {
-      privacyLink.href = 'privacy-policy-en.html';
-      privacyLink.textContent = 'Privacy Policy';
-    } else {
-      privacyLink.href = 'privacy-policy.html';
-      privacyLink.textContent = 'Política de Privacidad';
+    // Function to update privacy policy link based on language
+    function updatePrivacyPolicyLink() {
+        const privacyLink = document.getElementById('footer-privacy');
+        if (currentLanguage === 'en') {
+            privacyLink.href = 'privacy-policy-en.html';
+            privacyLink.textContent = 'Privacy Policy';
+        } else {
+            privacyLink.href = 'privacy-policy.html';
+            privacyLink.textContent = 'Política de Privacidad';
+        }
     }
-  }
-  updatePrivacyPolicyLink();
+    updatePrivacyPolicyLink();
 
     function changeLanguage(language) {
         currentLanguage = language;
