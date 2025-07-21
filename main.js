@@ -603,4 +603,227 @@ document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('#en-btn, #en-btn-mobile').forEach(btn => {
         btn.addEventListener('click', () => changeLanguage('en'));
     });
+
+
+// Calendar Booking System
+    let selectedDate = null;
+    let selectedTime = null;
+    let currentCalendarDate = new Date();
+    
+    const monthNames = {
+        es: [
+            'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
+            'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
+        ],
+        en: [
+            'January', 'February', 'March', 'April', 'May', 'June',
+            'July', 'August', 'September', 'October', 'November', 'December'
+        ]
+    };
+
+    const timeSlots = [
+        '09:00', '09:30', '10:00', '10:30', '11:00', '11:30',
+        '14:00', '14:30', '15:00', '15:30', '16:00', '16:30',
+        '17:00', '17:30'
+    ];
+
+    function initializeCalendar() {
+        generateCalendar();
+        generateTimeSlots();
+        setupCalendarNavigation();
+        setupBookingForm();
+    }
+
+    function generateCalendar() {
+        const calendarGrid = document.querySelector('.calendar-grid');
+        const currentMonthHeader = document.getElementById('currentMonth');
+        
+        // Clear existing days (keep headers)
+        const dayHeaders = calendarGrid.querySelectorAll('.calendar-day-header');
+        calendarGrid.innerHTML = '';
+        dayHeaders.forEach(header => calendarGrid.appendChild(header));
+        
+        // Update month header
+        const monthName = monthNames[currentLanguage][currentCalendarDate.getMonth()];
+        currentMonthHeader.textContent = `${monthName} ${currentCalendarDate.getFullYear()}`;
+        
+        // Get first day of month and number of days
+        const firstDay = new Date(currentCalendarDate.getFullYear(), currentCalendarDate.getMonth(), 1);
+        const lastDay = new Date(currentCalendarDate.getFullYear(), currentCalendarDate.getMonth() + 1, 0);
+        const daysInMonth = lastDay.getDate();
+        const startingDayOfWeek = firstDay.getDay() === 0 ? 6 : firstDay.getDay() - 1; // Adjust for Monday start
+        
+        // Add empty cells for days before month starts
+        for (let i = 0; i < startingDayOfWeek; i++) {
+            const emptyDay = document.createElement('div');
+            emptyDay.classList.add('calendar-day', 'other-month');
+            calendarGrid.appendChild(emptyDay);
+        }
+        
+        // Add days of the month
+        const today = new Date();
+        for (let day = 1; day <= daysInMonth; day++) {
+            const dayElement = document.createElement('div');
+            dayElement.classList.add('calendar-day');
+            dayElement.textContent = day;
+            
+            const dayDate = new Date(currentCalendarDate.getFullYear(), currentCalendarDate.getMonth(), day);
+            
+            // Mark today
+            if (dayDate.toDateString() === today.toDateString()) {
+                dayElement.classList.add('today');
+            }
+            
+            // Disable past dates and weekends
+            if (dayDate < today || dayDate.getDay() === 0 || dayDate.getDay() === 6) {
+                dayElement.classList.add('disabled');
+            } else {
+                dayElement.addEventListener('click', () => selectDate(dayDate, dayElement));
+            }
+            
+            calendarGrid.appendChild(dayElement);
+        }
+    }
+
+    function generateTimeSlots() {
+        const timeSlotsContainer = document.getElementById('timeSlots');
+        timeSlotsContainer.innerHTML = '';
+        
+        timeSlots.forEach(time => {
+            const slotElement = document.createElement('div');
+            slotElement.classList.add('time-slot');
+            slotElement.textContent = time;
+            slotElement.addEventListener('click', () => selectTime(time, slotElement));
+            timeSlotsContainer.appendChild(slotElement);
+        });
+    }
+
+    function selectDate(date, element) {
+        // Remove previous selection
+        document.querySelectorAll('.calendar-day.selected').forEach(el => {
+            el.classList.remove('selected');
+        });
+        
+        // Add selection to clicked date
+        element.classList.add('selected');
+        selectedDate = date;
+        
+        // Update selected date display
+        const selectedDateDisplay = document.getElementById('selectedDate');
+        selectedDateDisplay.textContent = date.toLocaleDateString(currentLanguage === 'en' ? 'en-US' : 'es-ES', {
+            weekday: 'long',
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+        
+        // Update summary
+        updateBookingSummary();
+        
+        // Enable time slots
+        document.querySelectorAll('.time-slot').forEach(slot => {
+            slot.classList.remove('disabled');
+        });
+    }
+
+    function selectTime(time, element) {
+        // Remove previous selection
+        document.querySelectorAll('.time-slot.selected').forEach(el => {
+            el.classList.remove('selected');
+        });
+        
+        // Add selection to clicked time
+        element.classList.add('selected');
+        selectedTime = time;
+        
+        // Update summary
+        updateBookingSummary();
+        
+        // Enable submit button if both date and time are selected
+        updateSubmitButton();
+    }
+
+    function updateBookingSummary() {
+        const summaryDate = document.getElementById('summaryDate');
+        const summaryTime = document.getElementById('summaryTime');
+        
+        if (selectedDate) {
+            summaryDate.textContent = selectedDate.toLocaleDateString(currentLanguage === 'en' ? 'en-US' : 'es-ES', {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+        } else {
+            summaryDate.textContent = '-';
+        }
+        
+        if (selectedTime) {
+            summaryTime.textContent = selectedTime;
+        } else {
+            summaryTime.textContent = '-';
+        }
+    }
+
+    function updateSubmitButton() {
+        const submitButton = document.getElementById('bookingSubmit');
+        const nameInput = document.getElementById('bookingName');
+        const emailInput = document.getElementById('bookingEmail');
+        const meetingTypeSelect = document.getElementById('meetingType');
+        
+        const isFormValid = selectedDate && selectedTime && 
+                           nameInput.value.trim() && 
+                           emailInput.value.trim() && 
+                           meetingTypeSelect.value;
+        
+        submitButton.disabled = !isFormValid;
+    }
+
+    function setupCalendarNavigation() {
+        document.getElementById('prevMonth').addEventListener('click', () => {
+            currentCalendarDate.setMonth(currentCalendarDate.getMonth() - 1);
+            generateCalendar();
+        });
+        
+        document.getElementById('nextMonth').addEventListener('click', () => {
+            currentCalendarDate.setMonth(currentCalendarDate.getMonth() + 1);
+            generateCalendar();
+        });
+    }
+
+    function setupBookingForm() {
+        const form = document.getElementById('bookingForm');
+        const inputs = form.querySelectorAll('input, select');
+        
+        inputs.forEach(input => {
+            input.addEventListener('input', updateSubmitButton);
+            input.addEventListener('change', updateSubmitButton);
+        });
+        
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Here you would normally send the booking data to your server
+            alert(currentLanguage === 'en' ? 
+                'Booking confirmed! We will send you a confirmation email shortly.' : 
+                '¡Reserva confirmada! Te enviaremos un email de confirmación en breve.'
+            );
+            
+            // Reset form
+            form.reset();
+            selectedDate = null;
+            selectedTime = null;
+            document.querySelectorAll('.selected').forEach(el => el.classList.remove('selected'));
+            document.getElementById('selectedDate').textContent = 
+                currentLanguage === 'en' ? 'Select a date' : 'Selecciona una fecha';
+            updateBookingSummary();
+            updateSubmitButton();
+        });
+    }
+
+    // Initialize calendar when page loads
+    if (document.getElementById('reserva-cita')) {
+        initializeCalendar();
+    }
+
 });
