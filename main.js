@@ -500,7 +500,7 @@ document.addEventListener('DOMContentLoaded', function () {
             // Testimonials
             'testimonials-title': 'What Our Clients Say',
 
-             // Global Impact
+            // Global Impact
             'impact-title': 'Global Impact in Numbers',
             'impact-countries': 'Countries with Clients',
             'impact-projects': 'Projects Executed',
@@ -605,11 +605,11 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
 
-// Calendar Booking System
+    // Calendar Booking System
     let selectedDate = null;
     let selectedTime = null;
     let currentCalendarDate = new Date();
-    
+
     const monthNames = {
         es: [
             'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
@@ -623,7 +623,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const timeSlots = [
         '09:00', '09:30', '10:00', '10:30', '11:00', '11:30',
-        '14:00', '14:30'        
+        '14:00', '14:30'
     ];
 
     function initializeCalendar() {
@@ -636,50 +636,50 @@ document.addEventListener('DOMContentLoaded', function () {
     function generateCalendar() {
         const calendarGrid = document.querySelector('.calendar-grid');
         const currentMonthHeader = document.getElementById('currentMonth');
-        
+
         // Clear existing days (keep headers)
         const dayHeaders = calendarGrid.querySelectorAll('.calendar-day-header');
         calendarGrid.innerHTML = '';
         dayHeaders.forEach(header => calendarGrid.appendChild(header));
-        
+
         // Update month header
         const monthName = monthNames[currentLanguage][currentCalendarDate.getMonth()];
         currentMonthHeader.textContent = `${monthName} ${currentCalendarDate.getFullYear()}`;
-        
+
         // Get first day of month and number of days
         const firstDay = new Date(currentCalendarDate.getFullYear(), currentCalendarDate.getMonth(), 1);
         const lastDay = new Date(currentCalendarDate.getFullYear(), currentCalendarDate.getMonth() + 1, 0);
         const daysInMonth = lastDay.getDate();
         const startingDayOfWeek = firstDay.getDay() === 0 ? 6 : firstDay.getDay() - 1; // Adjust for Monday start
-        
+
         // Add empty cells for days before month starts
         for (let i = 0; i < startingDayOfWeek; i++) {
             const emptyDay = document.createElement('div');
             emptyDay.classList.add('calendar-day', 'other-month');
             calendarGrid.appendChild(emptyDay);
         }
-        
+
         // Add days of the month
         const today = new Date();
         for (let day = 1; day <= daysInMonth; day++) {
             const dayElement = document.createElement('div');
             dayElement.classList.add('calendar-day');
             dayElement.textContent = day;
-            
+
             const dayDate = new Date(currentCalendarDate.getFullYear(), currentCalendarDate.getMonth(), day);
-            
+
             // Mark today
             if (dayDate.toDateString() === today.toDateString()) {
                 dayElement.classList.add('today');
             }
-            
+
             // Disable past dates and weekends
             if (dayDate < today || dayDate.getDay() === 0 || dayDate.getDay() === 6) {
                 dayElement.classList.add('disabled');
             } else {
                 dayElement.addEventListener('click', () => selectDate(dayDate, dayElement));
             }
-            
+
             calendarGrid.appendChild(dayElement);
         }
     }
@@ -687,7 +687,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function generateTimeSlots() {
         const timeSlotsContainer = document.getElementById('timeSlots');
         timeSlotsContainer.innerHTML = '';
-        
+
         timeSlots.forEach(time => {
             const slotElement = document.createElement('div');
             slotElement.classList.add('time-slot');
@@ -702,11 +702,11 @@ document.addEventListener('DOMContentLoaded', function () {
         document.querySelectorAll('.calendar-day.selected').forEach(el => {
             el.classList.remove('selected');
         });
-        
+
         // Add selection to clicked date
         element.classList.add('selected');
         selectedDate = date;
-        
+
         // Update selected date display
         const selectedDateDisplay = document.getElementById('selectedDate');
         selectedDateDisplay.textContent = date.toLocaleDateString(currentLanguage === 'en' ? 'en-US' : 'es-ES', {
@@ -715,10 +715,10 @@ document.addEventListener('DOMContentLoaded', function () {
             month: 'long',
             day: 'numeric'
         });
-        
+
         // Update summary
         updateBookingSummary();
-        
+
         // Enable time slots
         document.querySelectorAll('.time-slot').forEach(slot => {
             slot.classList.remove('disabled');
@@ -730,14 +730,14 @@ document.addEventListener('DOMContentLoaded', function () {
         document.querySelectorAll('.time-slot.selected').forEach(el => {
             el.classList.remove('selected');
         });
-        
+
         // Add selection to clicked time
         element.classList.add('selected');
         selectedTime = time;
-        
+
         // Update summary
         updateBookingSummary();
-        
+
         // Enable submit button if both date and time are selected
         updateSubmitButton();
     }
@@ -745,7 +745,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function updateBookingSummary() {
         const summaryDate = document.getElementById('summaryDate');
         const summaryTime = document.getElementById('summaryTime');
-        
+
         if (selectedDate) {
             summaryDate.textContent = selectedDate.toLocaleDateString(currentLanguage === 'en' ? 'en-US' : 'es-ES', {
                 weekday: 'long',
@@ -756,7 +756,7 @@ document.addEventListener('DOMContentLoaded', function () {
         } else {
             summaryDate.textContent = '-';
         }
-        
+
         if (selectedTime) {
             summaryTime.textContent = selectedTime;
         } else {
@@ -767,14 +767,16 @@ document.addEventListener('DOMContentLoaded', function () {
     function updateSubmitButton() {
         const submitButton = document.getElementById('bookingSubmit');
         const nameInput = document.getElementById('bookingName');
+        const empresaImput = document.getElementById('bookingEmpresa');
         const emailInput = document.getElementById('bookingEmail');
         const meetingTypeSelect = document.getElementById('meetingType');
-        
-        const isFormValid = selectedDate && selectedTime && 
-                           nameInput.value.trim() && 
-                           emailInput.value.trim() && 
-                           meetingTypeSelect.value;
-        
+
+        const isFormValid = selectedDate && selectedTime &&
+            nameInput.value.trim() &&
+            empresaImput.value.trim() &&
+            emailInput.value.trim() &&
+            meetingTypeSelect.value;
+
         submitButton.disabled = !isFormValid;
     }
 
@@ -783,7 +785,7 @@ document.addEventListener('DOMContentLoaded', function () {
             currentCalendarDate.setMonth(currentCalendarDate.getMonth() - 1);
             generateCalendar();
         });
-        
+
         document.getElementById('nextMonth').addEventListener('click', () => {
             currentCalendarDate.setMonth(currentCalendarDate.getMonth() + 1);
             generateCalendar();
@@ -793,28 +795,28 @@ document.addEventListener('DOMContentLoaded', function () {
     function setupBookingForm() {
         const form = document.getElementById('bookingForm');
         const inputs = form.querySelectorAll('input, select');
-        
+
         inputs.forEach(input => {
             input.addEventListener('input', updateSubmitButton);
             input.addEventListener('change', updateSubmitButton);
         });
-        
+
         form.addEventListener('submit', (e) => {
             e.preventDefault();
-            
+
             // Here you would normally send the booking data to your server
 
-            alert(currentLanguage === 'en' ? 
-                'Booking confirmed! We will send you a confirmation email shortly.' : 
+            alert(currentLanguage === 'en' ?
+                'Booking confirmed! We will send you a confirmation email shortly.' :
                 '¡Reserva confirmada! Te enviaremos un email de confirmación en breve.'
             );
-            
+
             // Reset form
             form.reset();
             selectedDate = null;
             selectedTime = null;
             document.querySelectorAll('.selected').forEach(el => el.classList.remove('selected'));
-            document.getElementById('selectedDate').textContent = 
+            document.getElementById('selectedDate').textContent =
                 currentLanguage === 'en' ? 'Select a date' : 'Selecciona una fecha';
             updateBookingSummary();
             updateSubmitButton();
