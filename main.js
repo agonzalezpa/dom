@@ -623,8 +623,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const timeSlots = [
         '09:00', '09:30', '10:00', '10:30', '11:00', '11:30',
-        '14:00', '14:30', '15:00', '15:30', '16:00', '16:30',
-        '17:00', '17:30'
+        '14:00', '14:30'        
     ];
 
     function initializeCalendar() {
@@ -804,6 +803,7 @@ document.addEventListener('DOMContentLoaded', function () {
             e.preventDefault();
             
             // Here you would normally send the booking data to your server
+
             alert(currentLanguage === 'en' ? 
                 'Booking confirmed! We will send you a confirmation email shortly.' : 
                 '¡Reserva confirmada! Te enviaremos un email de confirmación en breve.'
