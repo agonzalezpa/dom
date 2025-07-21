@@ -1,23 +1,98 @@
-<!-- Calendar Booking Section -->
+<html lang="es">
+
+</html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="DOM LLC - Desarrollo de software empresarial, Odoo ERP, sistemas logística, soluciones multiplataforma para empresas innovadoras">
+    <meta name="keywords"
+        content="desarrollo software empresarial, Odoo ERP, sistemas logística, APIs, microservicios, cloud solutions">
+    <title>DOM LLC | Software Inteligente para Empresas</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@7.2.96/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="hero-styles.css">
+   
+</head>
+
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="logo.png" alt="DOM Logo" width="120">
+            </div>
+            <nav>
+                <ul class="desktop-menu">
+                    <li><a href="#servicios" data-lang="nav-services">Servicios</a></li>
+                    <li><a href="#industrias" data-lang="nav-industries">Industrias</a></li>
+
+                    <li><a href="#contacto" data-lang="nav-contact">Contacto</a></li>
+                    <li class="language-selector">
+                        <button id="es-btn" class="active">ES</button> |
+                        <button id="en-btn">EN</button>
+                    </li>
+                    <li><a href="schedule-meeting.html" class="schedule-button" data-lang="schedule-meeting">📆 Agendar
+                            Reunión</a></li>
+                </ul>
+                <div class="mobile-menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+        <div class="mobile-menu">
+            <ul>
+                <li><a href="#servicios" data-lang="nav-services">Servicios</a></li>
+                <li><a href="#industrias" data-lang="nav-industries">Industrias</a></li>
+                <li><a href="#contacto" data-lang="nav-contact">Contacto</a></li>
+                <li class="language-selector-mobile">
+                    <button id="es-btn-mobile" class="active">ES</button> |
+                    <button id="en-btn-mobile">EN</button>
+                </li>
+                <li><a href="schedule-meeting.html" class="schedule-button" data-lang="schedule-meeting">📆 Agendar
+                        Reunión</a></li>
+            </ul>
+        </div>
+        <!-- Clarity tracking code for https://dom0125.com/ -->
+        <script>
+            (function (c, l, a, r, i, t, y) {
+                c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+                t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i + "?ref=bwt";
+                y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+            })(window, document, "clarity", "script", "rxjx65h4ze");
+        </script>
+    </header>
+
+    <!-- Calendar Booking Section -->
     <section id="reserva-cita" class="section-padding">
         <div class="container">
             <div class="section-header" data-aos="fade-up">
                 <h2 data-lang="booking-title">Agenda una Reunión</h2>
                 <div class="accent-line"></div>
-                <p data-lang="booking-subtitle">Reserva una cita gratuita para discutir tu proyecto y descubrir cómo podemos ayudarte</p>
+                <p data-lang="booking-subtitle">Reserva una cita gratuita para discutir tu proyecto y descubrir cómo
+                    podemos ayudarte</p>
             </div>
             <div class="booking-container" data-aos="fade-up">
                 <div class="calendar-widget">
                     <div class="calendar-header">
                         <button class="calendar-nav" id="prevMonth">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                                <path d="M15 6L9 12L15 18" stroke="#CCD6F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M15 6L9 12L15 18" stroke="#CCD6F6" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
                             </svg>
                         </button>
                         <h3 id="currentMonth">Diciembre 2023</h3>
                         <button class="calendar-nav" id="nextMonth">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                                <path d="M9 18L15 12L9 6" stroke="#CCD6F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M9 18L15 12L9 6" stroke="#CCD6F6" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
                             </svg>
                         </button>
                     </div>
@@ -32,7 +107,7 @@
                         <!-- Calendar days will be generated by JavaScript -->
                     </div>
                 </div>
-                
+
                 <div class="time-slots">
                     <h4 data-lang="time-slots-title">Horarios Disponibles</h4>
                     <div class="selected-date">
@@ -43,7 +118,7 @@
                         <!-- Time slots will be generated by JavaScript -->
                     </div>
                 </div>
-                
+
                 <div class="booking-form">
                     <h4 data-lang="booking-form-title">Detalles de la Reunión</h4>
                     <form id="bookingForm">
@@ -71,14 +146,16 @@
                         </div>
                         <div class="form-group">
                             <label for="bookingMessage" data-lang="booking-message">Mensaje (Opcional)</label>
-                            <textarea id="bookingMessage" name="message" rows="3" placeholder="Cuéntanos brevemente sobre tu proyecto o necesidades"></textarea>
+                            <textarea id="bookingMessage" name="message" rows="3"
+                                placeholder="Cuéntanos brevemente sobre tu proyecto o necesidades"></textarea>
                         </div>
                         <div class="booking-summary">
                             <h5 data-lang="booking-summary">Resumen de la Cita:</h5>
                             <div class="summary-details">
                                 <p><strong data-lang="summary-date">Fecha:</strong> <span id="summaryDate">-</span></p>
                                 <p><strong data-lang="summary-time">Hora:</strong> <span id="summaryTime">-</span></p>
-                                <p><strong data-lang="summary-duration">Duración:</strong> <span data-lang="duration-text">45 minutos</span></p>
+                                <p><strong data-lang="summary-duration">Duración:</strong> <span
+                                        data-lang="duration-text">45 minutos</span></p>
                             </div>
                         </div>
                         <button type="submit" class="submit-button" id="bookingSubmit" disabled>
@@ -89,3 +166,30 @@
             </div>
         </div>
     </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="logo.png" alt="DOM Logo" width="120">
+                    <p data-lang="footer-tagline">Transformando ideas en soluciones digitales</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p id="footer-copyright" data-lang="footer-copyright"> 2025 DOM LLC. Todos los derechos reservados.</p>
+                <a id="footer-privacy" href="privacy-policy.html" data-lang="footer-privacy">Política de Privacidad</a>
+            </div>
+        </div>
+    </footer>
+    <script src="main.js" type="module"></script>
+
+
+</body>
+<!-- Back to Top Button -->
+<div class="back-to-top">
+    <svg viewBox="0 0 24 24" fill="none">
+        <path d="M18 15L12 9L6 15" stroke="#0A192F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+</div>
+
+</html>
