@@ -975,7 +975,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 );
 
                 // Formato con zona horaria del cliente
-                const fechaCliente = clientDateTime.toISO(); // Esto incluye la zona horaria
+                const fechaCliente = clientDateTime.toFormat('yyyy-LL-dd HH:mm');
                 formData.append('fechaCliente', fechaCliente);
                 formData.append('timezonecliente', clientTimezone);
 
