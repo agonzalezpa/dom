@@ -347,7 +347,20 @@
                                 <option value="support" data-lang="technical-support">Soporte Técnico</option>
                             </select>
                         </div>
-
+                        <div class="form-group">
+                            <label for="guestEmails" data-lang="guest-emails">Invitar correos adicionales (máx.
+                                5)</label>
+                            <div id="guestEmailsContainer" class="guest-emails-container">
+                                <input type="email" name="guestEmails[]" class="guest-email-input"
+                                    placeholder="Correo invitado" autocomplete="off">
+                            </div>
+                            <button type="button" id="addGuestEmail" class="add-guest-email-btn"
+                                data-lang="add-guest-email">
+                                + Agregar otro correo
+                            </button>
+                            <small data-lang="guest-emails-help">Puedes agregar hasta 5 invitados. Cada correo debe ser
+                                válido.</small>
+                        </div>
                         <div class="form-group">
                             <label for="bookingMessage" data-lang="booking-message">Mensaje (Opcional)</label>
                             <textarea id="bookingMessage" name="message" rows="3"
@@ -397,5 +410,34 @@
         <path d="M18 15L12 9L6 15" stroke="#0A192F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
     </svg>
 </div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const maxGuests = 5;
+        const container = document.getElementById('guestEmailsContainer');
+        const addBtn = document.getElementById('addGuestEmail');
+
+        addBtn.addEventListener('click', function () {
+            const inputs = container.querySelectorAll('.guest-email-input');
+            if (inputs.length < maxGuests) {
+                const input = document.createElement('input');
+                input.type = 'email';
+                input.name = 'guestEmails[]';
+                input.className = 'guest-email-input';
+                input.placeholder = 'Correo invitado';
+                input.autocomplete = 'off';
+                container.appendChild(input);
+            }
+            if (container.querySelectorAll('.guest-email-input').length >= maxGuests) {
+                addBtn.disabled = true;
+            }
+        });
+
+        container.addEventListener('input', function () {
+            if (container.querySelectorAll('.guest-email-input').length < maxGuests) {
+                addBtn.disabled = false;
+            }
+        });
+    });
+</script>
 
 </html>

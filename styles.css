@@ -1585,3 +1585,40 @@ footer {
         padding: 20px;
     }
 }
+
+/****************************************************/
+.guest-emails-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+.guest-email-input {
+    padding: 10px 12px;
+    border: 1px solid #ccd6f6;
+    border-radius: 8px;
+    font-size: 1rem;
+    background: #f7fafd;
+    transition: border 0.2s;
+}
+.guest-email-input:focus {
+    border-color: #00FF88;
+    outline: none;
+}
+.add-guest-email-btn {
+    background: #00FF88;
+    color: #0A192F;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 18px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 4px;
+    transition: background 0.2s;
+}
+.add-guest-email-btn:disabled {
+    background: #b2f5d6;
+    color: #888;
+    cursor: not-allowed;
+}
