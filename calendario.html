@@ -342,10 +342,12 @@
                             <select id="meetingType" name="meetingType" required>
                                 <option value="" data-lang="select-type">Selecciona el tipo</option>
                                 <option value="Consulta General" data-lang="consultation">Consulta General</option>
-                                <option value="Software personalizado" data-lang="project-discussion">Software personalizado</option>
+                                <option value="Software personalizado" data-lang="project-discussion">Software
+                                    personalizado</option>
                                 <option value="Redes sociales" data-lang="social media">Redes sociales</option>
                                 <option value="Página web" data-lang="paginas webst">Página web</option>
-                                <option value="Automatización con IA" data-lang="automatizaciones">Automatización con IA</option>
+                                <option value="Automatización con IA" data-lang="automatizaciones">Automatización con IA
+                                </option>
                                 <option value="Diseño gráfico" data-lang="automatizaciones">Diseño gráfico</option>
                             </select>
                         </div>
@@ -413,6 +415,99 @@
     </svg>
 </div>
 <script>
+    // Puedes poner esto en main.js o en un <script> antes de main.js
+    const translations = {
+        es: {
+            "booking-title": "Agenda una Reunión",
+            "booking-subtitle": "Reserva una cita gratuita para discutir tu proyecto y descubrir cómo podemos ayudarte",
+            "time-slots-title": "Horarios Disponibles",
+            "selected-date": "Fecha seleccionada:",
+            "booking-form-title": "Detalles de la Reunión",
+            "booking-name": "Nombre*",
+            "booking-empresa": "Empresa/ Negocio/ Institución",
+            "booking-email": "Email*",
+            "booking-phone": "Teléfono",
+            "booking-country": "País*",
+            "select-country": "Selecciona tu país",
+            "meeting-type": "Propósito de la reunión*",
+            "select-type": "Selecciona el tipo",
+            "consultation": "Consulta General",
+            "project-discussion": "Software personalizado",
+            "social media": "Redes sociales",
+            "paginas webst": "Página web",
+            "automatizaciones": "Automatización con IA",
+            "booking-message": "Mensaje (Opcional)",
+            "guest-emails": "Invitar correos adicionales (máx. 5)",
+            "add-guest-email": "+ Agregar otro correo",
+            "guest-emails-help": "Puedes agregar hasta 5 invitados. Cada correo debe ser válido.",
+            "booking-summary": "Resumen de la Cita:",
+            "summary-date": "Fecha:",
+            "summary-time": "Hora:",
+            "summary-duration": "Duración:",
+            "duration-text": "20 minutos",
+            "confirm-booking": "Confirmar Reserva",
+            "nav-services": "Servicios",
+            "nav-industries": "Industrias",
+            "nav-contact": "Contacto",
+            "schedule-meeting": "📆 Agendar Reunión",
+            "footer-tagline": "Transformando ideas en soluciones digitales",
+            "footer-copyright": "2025 DOM LLC. Todos los derechos reservados.",
+            "footer-privacy": "Política de Privacidad",
+            "day-mon": "Lun",
+            "day-tue": "Mar",
+            "day-wed": "Mié",
+            "day-thu": "Jue",
+            "day-fri": "Vie",
+            "day-sat": "Sáb",
+            "day-sun": "Dom",
+            "Select a date": "Selecciona una fecha"
+        },
+        en: {
+            "booking-title": "Book a Meeting",
+            "booking-subtitle": "Book a free appointment to discuss your project and discover how we can help you",
+            "time-slots-title": "Available Time Slots",
+            "selected-date": "Selected date:",
+            "booking-form-title": "Meeting Details",
+            "booking-name": "Name*",
+            "booking-empresa": "Company / Business / Institution",
+            "booking-email": "Email*",
+            "booking-phone": "Phone",
+            "booking-country": "Country*",
+            "select-country": "Select your country",
+            "meeting-type": "Meeting Purpose*",
+            "select-type": "Select type",
+            "consultation": "General Consultation",
+            "project-discussion": "Custom Software",
+            "social media": "Social Media",
+            "paginas webst": "Website",
+            "automatizaciones": "AI Automation",
+            "booking-message": "Message (Optional)",
+            "guest-emails": "Invite additional emails (max. 5)",
+            "add-guest-email": "+ Add another email",
+            "guest-emails-help": "You can add up to 5 guests. Each email must be valid.",
+            "booking-summary": "Appointment Summary:",
+            "summary-date": "Date:",
+            "summary-time": "Time:",
+            "summary-duration": "Duration:",
+            "duration-text": "20 minutes",
+            "confirm-booking": "Confirm Booking",
+            "nav-services": "Services",
+            "nav-industries": "Industries",
+            "nav-contact": "Contact",
+            "schedule-meeting": "📆 Schedule Meeting",
+            "footer-tagline": "Transforming ideas into digital solutions",
+            "footer-copyright": "2025 DOM LLC. All rights reserved.",
+            "footer-privacy": "Privacy Policy",
+            "day-mon": "Mon",
+            "day-tue": "Tue",
+            "day-wed": "Wed",
+            "day-thu": "Thu",
+            "day-fri": "Fri",
+            "day-sat": "Sat",
+            "day-sun": "Sun",
+            "Select a date": "Select a date"
+        }
+    };
     document.addEventListener('DOMContentLoaded', function () {
         const maxGuests = 5;
         const container = document.getElementById('guestEmailsContainer');
