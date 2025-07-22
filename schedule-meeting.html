@@ -591,15 +591,14 @@
         });
 
         document.getElementById('userTimezone').textContent = Intl.DateTimeFormat().resolvedOptions().timeZone;
+        fetch('counter.php')
+            .then(response => response.text())
+            .then(count => {
+                console.info('Visit count in this week:', count);
+
+            });
     });
 </script>
-<script>
-    fetch('counter.php')
-        .then(response => response.text())
-        .then(count => {
-            console.info('Visit count in this week:', count);
 
-        });
-</script>
 
 </html>
