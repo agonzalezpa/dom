@@ -828,7 +828,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const isFormValid = selectedDate && selectedTime &&
             nameInput.value.trim() &&
-            empresaInput.value.trim() &&
             emailInput.value.trim() &&
             countryInput.value.trim() &&
             meetingTypeSelect.value;
@@ -852,7 +851,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const form = document.getElementById('bookingForm');
         if (!form) return;
         const inputs = form.querySelectorAll('input, select');
-        const submitButton = document.getElementById('bookingSubmit');
+        //const submitButton = document.getElementById('bookingSubmit');
 
         // Crea la instancia de Notyf (hazlo solo una vez)
         const notyf = new Notyf({
