@@ -415,6 +415,26 @@
     </svg>
 </div>
 <script>
+    function setLanguage(lang) {
+        document.querySelectorAll('[data-lang]').forEach(el => {
+            const key = el.getAttribute('data-lang');
+            if (translations[lang][key]) {
+                if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                    el.placeholder = translations[lang][key];
+                } else if (el.tagName === 'OPTION') {
+                    el.textContent = translations[lang][key];
+                } else {
+                    el.innerHTML = translations[lang][key];
+                }
+            }
+        });
+
+        // Cambia el texto especial de "Selecciona una fecha"
+        const selectedDate = document.getElementById('selectedDate');
+        if (selectedDate && (!selectedDate.textContent || selectedDate.textContent === translations['es']["Select a date"] || selectedDate.textContent === translations['en']["Select a date"])) {
+            selectedDate.textContent = translations[lang]["Select a date"];
+        }
+    }
     // Puedes poner esto en main.js o en un <script> antes de main.js
     const translations = {
         es: {
@@ -534,6 +554,31 @@
                 addBtn.disabled = false;
             }
         });
+
+
+        // Idioma por defecto
+        let currentLanguage = 'es';
+        setLanguage(currentLanguage);
+
+        // Botones de idioma
+        document.querySelectorAll('#es-btn, #es-btn-mobile').forEach(btn => {
+            btn.addEventListener('click', function () {
+                currentLanguage = 'es';
+                setLanguage('es');
+                document.querySelectorAll('#es-btn, #es-btn-mobile').forEach(b => b.classList.add('active'));
+                document.querySelectorAll('#en-btn, #en-btn-mobile').forEach(b => b.classList.remove('active'));
+            });
+        });
+        document.querySelectorAll('#en-btn, #en-btn-mobile').forEach(btn => {
+            btn.addEventListener('click', function () {
+                currentLanguage = 'en';
+                setLanguage('en');
+                document.querySelectorAll('#en-btn, #en-btn-mobile').forEach(b => b.classList.add('active'));
+                document.querySelectorAll('#es-btn, #es-btn-mobile').forEach(b => b.classList.remove('active'));
+            });
+        });
+
+
     });
 </script>
 
