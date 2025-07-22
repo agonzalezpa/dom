@@ -846,22 +846,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Prepare form data
             const formData = new FormData(form);
-            if (selectedDate) {
-                formData.append('date', selectedDate.toISOString().split('T')[0]);
-            }
-            if (selectedTime) {
-                formData.append('time', selectedTime);
+            if (selectedDate && selectedTime) {
+                // Combina fecha y hora en formato MySQL DATETIME
+                const dateStr = selectedDate.toISOString().split('T')[0];
+                const fecha = `${dateStr} ${selectedTime}:00`;
+                formData.append('fecha', fecha);
             }
             formData.append('language', currentLanguage);
-
-            // Show sending message
-           /* notyf.open({
-                type: 'info',
-                message: currentLanguage === 'en'
-                    ? 'Sending reservation...'
-                    : 'Enviando reserva...'
-            });*/
-
 
             fetch('booking_handler.php', {
                 method: 'POST',

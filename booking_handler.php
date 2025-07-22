@@ -17,7 +17,7 @@ $fecha = $_POST['fecha'] ?? '';
 $mensaje = $_POST['mensaje'] ?? '';
 
 // Validación básica
-if (!$nombre || !$email || !$fecha|| !$mensaje|| !$pais) {
+if (!$nombre || !$email || !$fecha|| !$pais) {
     http_response_code(400);
     echo "Faltan datos obligatorios.";
     exit;
