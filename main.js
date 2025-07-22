@@ -445,7 +445,8 @@ document.addEventListener('DOMContentLoaded', function () {
             'footer-quick-links': 'Enlaces Rápidos',
             'footer-connect': 'Conéctate',
             //'footer-copyright': `© ${new Date().getFullYear()} DOM. Todos los derechos reservados.`
-            'footer-privacy': 'Política de Privacidad'
+            'footer-privacy': 'Política de Privacidad',
+            "schedule-meeting": "Agendar una Reunión"
         },
         en: {
             // Navigation
@@ -528,7 +529,8 @@ document.addEventListener('DOMContentLoaded', function () {
             'footer-quick-links': 'Quick Links',
             'footer-connect': 'Connect',
             //'footer-copyright': '© ${new Date().getFullYear()} DOM. All rights reserved.'
-            'footer-privacy': 'Privacy Policy'
+            'footer-privacy': 'Privacy Policy',
+            "schedule-meeting": "Schedule a Meeting"
         }
 
 
