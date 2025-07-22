@@ -777,9 +777,9 @@ document.addEventListener('DOMContentLoaded', function () {
         generateTimeSlots();
 
         // Enable time slots
-        document.querySelectorAll('.time-slot').forEach(slot => {
+       /* document.querySelectorAll('.time-slot').forEach(slot => {
             slot.classList.remove('disabled');
-        });
+        });*/
         
     }
 

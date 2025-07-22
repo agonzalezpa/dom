@@ -48,7 +48,12 @@ section {
     background-color: var(--secondary-bg);
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     color: var(--white);
     font-weight: 600;
     line-height: 1.2;
@@ -120,7 +125,8 @@ header .container {
     align-items: center;
 }
 
-.logo img, .footer-logo img {
+.logo img,
+.footer-logo img {
     max-width: 120px;
     height: auto;
 }
@@ -677,7 +683,8 @@ header .container {
     margin-top: 30px;
 }
 
-.prev-btn, .next-btn {
+.prev-btn,
+.next-btn {
     background: transparent;
     border: 1px solid var(--text-gray);
     border-radius: 50%;
@@ -690,12 +697,14 @@ header .container {
     margin: 0 10px;
 }
 
-.prev-btn:hover, .next-btn:hover {
+.prev-btn:hover,
+.next-btn:hover {
     background: rgba(255, 255, 255, 0.1);
     border-color: var(--neon-green);
 }
 
-.prev-btn:hover svg path, .next-btn:hover svg path {
+.prev-btn:hover svg path,
+.next-btn:hover svg path {
     stroke: var(--neon-green);
 }
 
@@ -778,7 +787,8 @@ label {
     color: var(--white);
 }
 
-input, textarea {
+input,
+textarea {
     width: 100%;
     padding: 12px 15px;
     border: 1px solid rgba(204, 214, 246, 0.3);
@@ -789,7 +799,8 @@ input, textarea {
     transition: var(--transition);
 }
 
-input:focus, textarea:focus {
+input:focus,
+textarea:focus {
     outline: none;
     border-color: var(--electric-blue);
     box-shadow: 0 0 0 3px rgba(0, 243, 255, 0.1);
@@ -904,7 +915,8 @@ footer {
     max-width: 300px;
 }
 
-.footer-links h4, .footer-social h4 {
+.footer-links h4,
+.footer-social h4 {
     font-size: 1.2rem;
     margin-bottom: 20px;
 }
@@ -952,7 +964,8 @@ footer {
     border-top: 1px solid rgba(204, 214, 246, 0.1);
 }
 
-.footer-bottom p, .footer-bottom a {
+.footer-bottom p,
+.footer-bottom a {
     font-size: 0.85rem;
     color: var(--text-gray);
 }
@@ -971,7 +984,7 @@ footer {
     left: 0;
     width: 100%;
     height: 100%;
-   /* background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2300FF88' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;*/
+    /* background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2300FF88' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;*/
     opacity: 0.3;
     z-index: 0;
 }
@@ -1036,10 +1049,13 @@ footer {
 }
 
 @keyframes pulse-icon {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: scale(1);
         filter: drop-shadow(0 0 10px rgba(0, 255, 136, 0.5));
     }
+
     50% {
         transform: scale(1.1);
         filter: drop-shadow(0 0 20px rgba(0, 255, 136, 0.8));
@@ -1074,6 +1090,7 @@ footer {
     from {
         text-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
     }
+
     to {
         text-shadow: 0 0 20px rgba(0, 243, 255, 0.8);
     }
@@ -1094,15 +1111,15 @@ footer {
         grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
         gap: 20px;
     }
-    
+
     .stat-item {
         padding: 20px 15px;
     }
-    
+
     .stat-number {
         font-size: 2.5rem;
     }
-    
+
     .stat-icon svg {
         width: 50px;
         height: 50px;
@@ -1114,11 +1131,11 @@ footer {
         grid-template-columns: 1fr 1fr;
         gap: 15px;
     }
-    
+
     .stat-number {
         font-size: 2rem;
     }
-    
+
     .stat-label {
         font-size: 0.85rem;
     }
@@ -1129,11 +1146,11 @@ footer {
     .hero-content h1 {
         font-size: 3rem;
     }
-    
+
     .section-header h2 {
         font-size: 2.2rem;
     }
-    
+
     .footer-content {
         grid-template-columns: 1fr;
         gap: 20px;
@@ -1144,36 +1161,36 @@ footer {
     .desktop-menu {
         display: none;
     }
-    
+
     .mobile-menu-toggle {
         display: flex;
     }
-    
+
     .hero-content h1 {
         font-size: 2.5rem;
     }
-    
+
     .hero-content p {
         font-size: 1.1rem;
     }
-    
+
     .section-padding {
         padding: 70px 0;
     }
-    
+
     .section-header h2 {
         font-size: 2rem;
     }
-    
+
     .contact-content {
         grid-template-columns: 1fr;
     }
-    
+
     .footer-content {
         grid-template-columns: 1fr;
         gap: 20px;
     }
-    
+
     .footer-bottom {
         flex-direction: column;
         gap: 15px;
@@ -1186,11 +1203,11 @@ footer {
         width: 100%;
         justify-content: center;
     }
-    
+
     .form-row {
         grid-template-columns: 1fr;
     }
-    
+
     .industries-grid {
         grid-template-columns: 1fr;
     }
@@ -1202,6 +1219,7 @@ footer {
         opacity: 0;
         transform: translateY(20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -1212,9 +1230,11 @@ footer {
     0% {
         box-shadow: 0 0 0 0 rgba(0, 255, 136, 0.4);
     }
+
     70% {
         box-shadow: 0 0 0 10px rgba(0, 255, 136, 0);
     }
+
     100% {
         box-shadow: 0 0 0 0 rgba(0, 255, 136, 0);
     }
@@ -1336,6 +1356,7 @@ footer {
 .calendar-day.disabled {
     color: var(--dark-gray);
     cursor: not-allowed;
+    pointer-events: none;
 }
 
 .calendar-day.other-month {
@@ -1417,6 +1438,7 @@ footer {
     color: var(--dark-gray);
     cursor: not-allowed;
     border-color: transparent;
+    pointer-events: none;
 }
 
 .booking-form {
@@ -1532,7 +1554,7 @@ footer {
         grid-template-columns: 1fr;
         gap: 30px;
     }
-    
+
     .calendar-widget,
     .time-slots {
         max-width: 600px;
@@ -1544,19 +1566,19 @@ footer {
     .calendar-grid {
         gap: 1px;
     }
-    
+
     .calendar-day {
         font-size: 0.8rem;
     }
-    
+
     .time-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .booking-container {
         gap: 20px;
     }
-    
+
     .calendar-widget,
     .time-slots,
     .booking-form {
