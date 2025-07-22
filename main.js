@@ -768,6 +768,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const submitButton = document.getElementById('bookingSubmit');
         const nameInput = document.getElementById('bookingName');
         const empresaInput = document.getElementById('bookingEmpresa');
+        const countryInput = document.getElementById('bookingCountry');
         const emailInput = document.getElementById('bookingEmail');
         const meetingTypeSelect = document.getElementById('meetingType');
 
@@ -775,6 +776,7 @@ document.addEventListener('DOMContentLoaded', function () {
             nameInput.value.trim() &&
             empresaInput.value.trim() &&
             emailInput.value.trim() &&
+            countryInput.value.trim() &&
             meetingTypeSelect.value;
 
         submitButton.disabled = !isFormValid;
@@ -853,12 +855,12 @@ document.addEventListener('DOMContentLoaded', function () {
             formData.append('language', currentLanguage);
 
             // Show sending message
-            notyf.open({
+           /* notyf.open({
                 type: 'info',
                 message: currentLanguage === 'en'
                     ? 'Sending reservation...'
                     : 'Enviando reserva...'
-            });
+            });*/
 
 
             fetch('booking_handler.php', {
