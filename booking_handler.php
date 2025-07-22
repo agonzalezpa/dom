@@ -9,15 +9,15 @@ $db_name = 'u750684196_domllc';
 $admin_email = 'info@dom0125.com';
 
 // Recibe los datos del formulario (POST)
-$nombre = $_POST['nombre'] ?? '';
+$nombre = $_POST['nombre'] ?? $_POST['name'] ?? '';
 $email = $_POST['email'] ?? '';
 $pais = $_POST['pais'] ?? '';
 $empresa = $_POST['empresa'] ?? '';
 $fecha = $_POST['fecha'] ?? '';
-$mensaje = $_POST['mensaje'] ?? '';
+$mensaje = $_POST['mensaje'] ?? $_POST['message'] ?? '';
 
 // Validación básica
-if (!$nombre || !$email || !$fecha|| !$pais) {
+if (!$nombre || !$email || !$fecha || !$pais) {
     http_response_code(400);
     echo "Faltan datos obligatorios.";
     exit;
@@ -46,4 +46,3 @@ $headers .= "Cc: agonzalezpa0191@dgmail.com\r\n"; // Agrega copias
 mail($admin_email, $subject, $body, $headers);
 
 echo "Reserva recibida correctamente.";
-?>
