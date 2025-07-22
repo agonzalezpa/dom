@@ -10,16 +10,16 @@ $db_name = 'u750684196_domllc';
 $admin_email = 'info@dom0125.com';
 
 // Recibe los datos del formulario (POST)
-$nombre = $_POST['nombre'] ?? $_POST['name'] ?? '';
-$email = $_POST['email'] ?? '';
-$pais = $_POST['pais'] ?? '';
-$empresa = $_POST['empresa'] ?? '';
-$fecha = $_POST['fecha'] ?? '';
-$telefono = $_POST['phone'] ?? '';
-$meetingType = $_POST['meetingType'] ?? '';
-$language = $_POST['language'] ?? '';
-$mensaje = $_POST['mensaje'] ?? $_POST['message'] ?? '';
-$invitados = $_POST['invitados'] ?? ''; // Será una cadena tipo "correo1@x.com,correo2@x.com"
+$nombre = htmlspecialchars(trim($_POST['nombre'] ?? $_POST['name'] ?? ''));
+$email = filter_var(trim($_POST['email'] ?? ''), FILTER_SANITIZE_EMAIL);
+$pais = htmlspecialchars(trim($_POST['pais'] ?? ''));
+$empresa = htmlspecialchars(trim($_POST['empresa'] ?? ''));
+$fecha = htmlspecialchars(trim($_POST['fecha'] ?? ''));
+$telefono = htmlspecialchars(trim($_POST['phone'] ?? ''));
+$meetingType = htmlspecialchars(trim($_POST['meetingType'] ?? ''));
+$language = htmlspecialchars(trim($_POST['language'] ?? ''));
+$mensaje = htmlspecialchars(trim($_POST['mensaje'] ?? $_POST['message'] ?? ''));
+$invitados = htmlspecialchars(trim($_POST['invitados'] ?? '')); // Será una cadena tipo "correo1@x.com,correo2@x.com"
 
 // Validación básica
 if (!$nombre || !$email || !$fecha || !$pais || !$meetingType) {
@@ -51,7 +51,7 @@ function sendmailToclient($email, $nombre, $fecha, $language)
         $intro = "Hemos recibido tu solicitud de cita para el <strong>" . htmlspecialchars($fecha) . "</strong>.<br>Estaremos puntuales para descubrir cómo podemos ayudarte y brindarte la mejor solución.";
     }
 
-    $client_message = '
+    $client_message = <<<HTML
 <div id="editbody1" style="font-size: 10pt; font-family: Verdana,Geneva,sans-serif;">
 <div id="v1editbody1" style="font-size: 10pt; font-family: Verdana,Geneva,sans-serif;">
 <div id="v1v1editbody1" style="font-size: 10pt; font-family: Verdana,Geneva,sans-serif;">
@@ -75,18 +75,13 @@ function sendmailToclient($email, $nombre, $fecha, $language)
 </tr>
 <tr>
 <td class="v1v1v1v1v1v1v1v1content" style="padding: 40px; background-color: #1e293b;">
-<div class="v1v1v1v1v1v1v1v1greeting" style="font-size: 18px; font-weight: 500; color: #6366f1; margin-bottom: 25px;">' . $greeting . '</div>
-<div class="v1v1v1v1v1v1v1v1intro" style="font-size: 16px; line-height: 1.6; color: #cbd5e1; margin-bottom: 25px;">' . $intro . '</div>
+<div class="v1v1v1v1v1v1v1v1greeting" style="font-size: 18px; font-weight: 500; color: #6366f1; margin-bottom: 25px;">{$greeting}</div>
+<div class="v1v1v1v1v1v1v1v1intro" style="font-size: 16px; line-height: 1.6; color: #cbd5e1; margin-bottom: 25px;">{$intro}</div>
 </td>
 </tr>
 <tr>
 <td class="v1v1v1v1v1v1v1v1footer" style="background-color: #0f172a; padding: 30px 40px; border-top: 1px solid #334155;">
 <table class="v1v1v1v1v1v1v1v1footer-table" style="width: 100%; border-collapse: collapse;" border="0" cellspacing="0" cellpadding="0">
-<tbody>
-<tr>
-<td class="v1v1v1v1v1v1v1v1signature" style="color: #f1f5f9; font-size: 16px; vertical-align: top; padding-right: 20px;"><strong>Saludos cordiales,</strong><br /><strong style="color: #6366f1;">Adrián González</strong><br /><span style="color: #94a3b8;">CEO, DOM LLC</span></td>
-<td class="v1v1v1v1v1v1v1v1profile-section" style="vertical-align: top; text-align: right; width: 170px;">
-<table border="0" cellspacing="0" cellpadding="0" align="right">
 <tbody>
 <tr>
 <td>
@@ -118,7 +113,7 @@ function sendmailToclient($email, $nombre, $fecha, $language)
 </div>
 </div>
 </div>
-';
+HTML;
 
     $client_subject = ($language === 'en')
         ? "Thank you for your booking at DOM!"
