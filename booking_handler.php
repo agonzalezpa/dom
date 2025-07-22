@@ -15,6 +15,8 @@ $email = filter_var(trim($_POST['email'] ?? ''), FILTER_SANITIZE_EMAIL);
 $pais = htmlspecialchars(trim($_POST['pais'] ?? ''));
 $empresa = htmlspecialchars(trim($_POST['empresa'] ?? ''));
 $fecha = htmlspecialchars(trim($_POST['fecha'] ?? ''));
+$fechaCliente = htmlspecialchars(trim($_POST['fechaCliente'] ?? ''));
+$timezonecliente = htmlspecialchars(trim($_POST['timezonecliente'] ?? ''));
 $telefono = htmlspecialchars(trim($_POST['phone'] ?? ''));
 $meetingType = htmlspecialchars(trim($_POST['meetingType'] ?? ''));
 $language = htmlspecialchars(trim($_POST['language'] ?? ''));
@@ -40,15 +42,15 @@ if ($conn->connect_error) {
     exit;
 }
 
-function sendmailToclient($email, $nombre, $fecha, $language)
+function sendmailToclient($email, $nombre, $fecha, $language, $timezonecliente)
 {
     // Mensaje según idioma
     if ($language === 'en') {
         $greeting = "Dear " . htmlspecialchars($nombre) . ",";
-        $intro = "We have received your appointment request for <strong>" . htmlspecialchars($fecha) . "</strong>.<br>We will be punctual to discover how we can help you and provide the best solution.";
+        $intro = "We have received your appointment request for <strong>" . htmlspecialchars($fecha) . " (" . htmlspecialchars($timezonecliente) . ") </strong>.<br>We will be punctual to discover how we can help you and provide the best solution.";
     } else {
         $greeting = "Hola " . htmlspecialchars($nombre) . ",";
-        $intro = "Hemos recibido tu solicitud de cita para el <strong>" . htmlspecialchars($fecha) . "</strong>.<br>Estaremos puntuales para descubrir cómo podemos ayudarte y brindarte la mejor solución.";
+        $intro = "Hemos recibido tu solicitud de cita para el <strong>" . htmlspecialchars($fecha) . " (" . htmlspecialchars($timezonecliente) . ") </strong>.<br>Estaremos puntuales para descubrir cómo podemos ayudarte y brindarte la mejor solución.";
     }
 
     $client_message = <<<HTML
@@ -146,7 +148,7 @@ if ($stmt->execute()) {
     $headers .= "Cc: agonzalezpa0191@gmail.com\r\n"; // Agrega copias
     //$headers .= "Cc: odelkysi92@gmail.com, agonzalezpa0191@dgmail.com\r\n";
     mail($admin_email, $subject, $body, $headers);
-    sendmailToclient($email, $nombre, $fecha, $language);
+    sendmailToclient($email, $nombre, $fechaCliente, $language, $timezonecliente);
 
     echo json_encode([
         "success" => true,

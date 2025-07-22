@@ -957,6 +957,11 @@ document.addEventListener('DOMContentLoaded', function () {
             // Prepare form data
             const formData = new FormData(form);
             if (selectedDate && selectedTime) {
+                //paso la fecha con la hora del cliente
+                formData.append('fechaCliente', fecha);
+                formData.append('timezonecliente', Intl.DateTimeFormat().resolvedOptions().timeZone);//paso tambien la zona horaria del cliente
+
+                //Y ahora paso la fecha que se va a guardar en la BD con la hora de la empresa
                 // Usa Luxon para crear la fecha en la zona de la empresa
                 const [hour, minute] = selectedTime.split(':');
                 const dt = luxon.DateTime.fromObject(
