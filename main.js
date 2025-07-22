@@ -958,10 +958,27 @@ document.addEventListener('DOMContentLoaded', function () {
             const formData = new FormData(form);
             if (selectedDate && selectedTime) {
                 //paso la fecha con la hora del cliente
-                const dateStr = selectedDate.toISOString().split('T')[0];
-                const fechaCliente = `${dateStr} ${selectedTime}:00`;
+                // OPCIÓN 1: Usar Luxon para crear fechaCliente con zona horaria del cliente
+                const clientTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+                const [hour1, minute2] = selectedTime.split(':');
+
+                // Crear la fecha en la zona horaria del cliente usando Luxon
+                const clientDateTime = luxon.DateTime.fromObject(
+                    {
+                        year: selectedDate.getFullYear(),
+                        month: selectedDate.getMonth() + 1,
+                        day: selectedDate.getDate(),
+                        hour: parseInt(hour1),
+                        minute: parseInt(minute2)
+                    },
+                    { zone: clientTimezone }
+                );
+
+                // Formato con zona horaria del cliente
+                const fechaCliente = clientDateTime.toISO(); // Esto incluye la zona horaria
                 formData.append('fechaCliente', fechaCliente);
-                formData.append('timezonecliente', Intl.DateTimeFormat().resolvedOptions().timeZone);//paso tambien la zona horaria del cliente
+                formData.append('timezonecliente', clientTimezone);
+
 
                 //Y ahora paso la fecha que se va a guardar en la BD con la hora de la empresa
                 // Usa Luxon para crear la fecha en la zona de la empresa
