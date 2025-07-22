@@ -958,7 +958,9 @@ document.addEventListener('DOMContentLoaded', function () {
             const formData = new FormData(form);
             if (selectedDate && selectedTime) {
                 //paso la fecha con la hora del cliente
-                formData.append('fechaCliente', fecha);
+                const dateStr = selectedDate.toISOString().split('T')[0];
+                const fechaCliente = `${dateStr} ${selectedTime}:00`;
+                formData.append('fechaCliente', fechaCliente);
                 formData.append('timezonecliente', Intl.DateTimeFormat().resolvedOptions().timeZone);//paso tambien la zona horaria del cliente
 
                 //Y ahora paso la fecha que se va a guardar en la BD con la hora de la empresa
