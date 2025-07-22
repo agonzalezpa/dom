@@ -963,10 +963,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 const [hour1, minute2] = selectedTime.split(':');
 
                 // Crear la fecha en la zona horaria del cliente usando Luxon
-              
+
 
                 // Formato con zona horaria del cliente
-                formData.append('fechaCliente',  convertToLocalTime(selectedDate, selectedTime));
+                var year = selectedDate.getFullYear();
+                var month = selectedDate.getMonth() + 1;
+                var day = selectedDate.getDate();
+                formData.append('fechaCliente', day + "/" + month + "/" + year + " " + convertToLocalTime(selectedDate, selectedTime));
                 formData.append('timezonecliente', clientTimezone);
 
 
