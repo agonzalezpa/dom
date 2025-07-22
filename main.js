@@ -853,9 +853,13 @@ document.addEventListener('DOMContentLoaded', function () {
             formData.append('language', currentLanguage);
 
             // Show sending message
-            notyf.info(currentLanguage === 'en'
-                ? 'Sending reservation...'
-                : 'Enviando reserva...');
+            notyf.open({
+                type: 'info',
+                message: currentLanguage === 'en'
+                    ? 'Sending reservation...'
+                    : 'Enviando reserva...'
+            });
+
 
             fetch('booking_handler.php', {
                 method: 'POST',
@@ -867,7 +871,10 @@ document.addEventListener('DOMContentLoaded', function () {
                         var textContent = currentLanguage === 'en'
                             ? 'Booking confirmed! We will send you a confirmation email shortly.'
                             : '¡Reserva confirmada! Te enviaremos un email de confirmación en breve.';
-                        notyf.success(textContent);
+                        notyf.open({
+                            type: 'success',
+                            message: textContent
+                        });
 
 
                         // Reset form and UI
@@ -883,13 +890,29 @@ document.addEventListener('DOMContentLoaded', function () {
                         var textContent = data.message || (currentLanguage === 'en'
                             ? 'There was an error saving your booking. Please try again.'
                             : 'Hubo un error al guardar tu reserva. Intenta de nuevo.');
-                        notyf.error(textContent);
+                        notyf.open({
+                            type: 'error',
+                            message: textContent
+                        });
                     }
                 })
                 .catch(() => {
-                    notyf.error(currentLanguage === 'en'
-                        ? 'There was an error sending your booking. Please try again.'
-                        : 'Hubo un error al enviar tu reserva. Intenta de nuevo.');
+                    notyf.open({
+                        type: 'error',
+                        message: currentLanguage === 'en'
+                            ? 'There was an error sending your booking. Please try again.'
+                            : 'Hubo un error al enviar tu reserva. Intenta de nuevo.'
+                    });
+                });
+        });
+    }
+
+    // Initialize calendar when page loads
+    if (document.getElementById('reserva-cita')) {
+        initializeCalendar();
+    }
+                        });
+                        
                 });
         });
     }
