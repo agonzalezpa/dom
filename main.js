@@ -797,7 +797,32 @@ document.addEventListener('DOMContentLoaded', function () {
         if (!form) return;
         const inputs = form.querySelectorAll('input, select');
         const submitButton = document.getElementById('bookingSubmit');
-        const responseMsg = document.getElementById('bookingResponse');
+       
+        // Crea la instancia de Notyf (hazlo solo una vez)
+        const notyf = new Notyf({
+            duration: 4000,
+            position: { x: 'right', y: 'top' },
+            types: [
+                {
+                    type: 'success',
+                    background: '#00FF88',
+                    icon: {
+                        className: 'material-icons',
+                        tagName: 'i',
+                        text: 'check_circle'
+                    }
+                },
+                {
+                    type: 'error',
+                    background: '#ff0033',
+                    icon: {
+                        className: 'material-icons',
+                        tagName: 'i',
+                        text: 'error'
+                    }
+                }
+            ]
+        });
 
         inputs.forEach(input => {
             input.addEventListener('input', updateSubmitButton);
@@ -818,45 +843,44 @@ document.addEventListener('DOMContentLoaded', function () {
             formData.append('language', currentLanguage);
 
             // Show sending message
-            responseMsg.textContent = currentLanguage === 'en'
+            notyf.info(currentLanguage === 'en'
                 ? 'Sending reservation...'
-                : 'Enviando reserva...';
-            responseMsg.className = '';
+                : 'Enviando reserva...');
 
             fetch('booking_handler.php', {
                 method: 'POST',
                 body: formData
             })
-            .then(res => res.json())
-            .then(data => {
-                if (data.success) {
-                    responseMsg.textContent = currentLanguage === 'en'
-                        ? 'Booking confirmed! We will send you a confirmation email shortly.'
-                        : '¡Reserva confirmada! Te enviaremos un email de confirmación en breve.';
-                    responseMsg.className = 'success';
+                .then(res => res.json())
+                .then(data => {
+                    if (data.success) {
+                         var textContent = currentLanguage === 'en'
+                            ? 'Booking confirmed! We will send you a confirmation email shortly.'
+                            : '¡Reserva confirmada! Te enviaremos un email de confirmación en breve.';
+                        notyf.success(textContent);
 
-                    // Reset form and UI
-                    form.reset();
-                    selectedDate = null;
-                    selectedTime = null;
-                    document.querySelectorAll('.selected').forEach(el => el.classList.remove('selected'));
-                    document.getElementById('selectedDate').textContent =
-                        currentLanguage === 'en' ? 'Select a date' : 'Selecciona una fecha';
-                    updateBookingSummary();
-                    updateSubmitButton();
-                } else {
-                    responseMsg.textContent = data.message || (currentLanguage === 'en'
-                        ? 'There was an error saving your booking. Please try again.'
-                        : 'Hubo un error al guardar tu reserva. Intenta de nuevo.');
-                    responseMsg.className = 'error';
-                }
-            })
-            .catch(() => {
-                responseMsg.textContent = currentLanguage === 'en'
-                    ? 'There was an error sending your booking. Please try again.'
-                    : 'Hubo un error al enviar tu reserva. Intenta de nuevo.';
-                responseMsg.className = 'error';
-            });
+
+                        // Reset form and UI
+                        form.reset();
+                        selectedDate = null;
+                        selectedTime = null;
+                        document.querySelectorAll('.selected').forEach(el => el.classList.remove('selected'));
+                        document.getElementById('selectedDate').textContent =
+                            currentLanguage === 'en' ? 'Select a date' : 'Selecciona una fecha';
+                        updateBookingSummary();
+                        updateSubmitButton();
+                    } else {
+                        var textContent = data.message || (currentLanguage === 'en'
+                            ? 'There was an error saving your booking. Please try again.'
+                            : 'Hubo un error al guardar tu reserva. Intenta de nuevo.');
+                        notyf.error(textContent);
+                    }
+                })
+                .catch(() => {
+                    notyf.error(currentLanguage === 'en'
+                        ? 'There was an error sending your booking. Please try again.'
+                        : 'Hubo un error al enviar tu reserva. Intenta de nuevo.');
+                });
         });
     }
 
