@@ -905,7 +905,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
         form.addEventListener('submit', (e) => {
             e.preventDefault();
-
+            const submitButton = document.getElementById('bookingSubmit');
+            // Deshabilita el botón y cambia el texto
+            submitButton.disabled = true;
+            const originalText = submitButton.innerHTML;
+            submitButton.innerHTML = '<span>Enviando reserva...</span>';
             // Prepare form data
             const formData = new FormData(form);
             if (selectedDate && selectedTime) {
@@ -952,6 +956,8 @@ document.addEventListener('DOMContentLoaded', function () {
                             currentLanguage === 'en' ? 'Select a date' : 'Selecciona una fecha';
                         updateBookingSummary();
                         updateSubmitButton();
+                        // *** ACTUALIZA LOS SLOTS Y CALENDARIO ***
+                        fetchBookedSlots(initializeCalendar);
                     } else {
                         var textContent = data.message || (currentLanguage === 'en'
                             ? 'There was an error saving your booking. Please try again.'
@@ -970,6 +976,10 @@ document.addEventListener('DOMContentLoaded', function () {
                             ? 'There was an error sending your booking. Please try again.'
                             : 'Hubo un error al enviar tu reserva. Intenta de nuevo.'
                     });
+                }).finally(() => {
+                    // Habilita el botón y restaura el texto
+                    submitButton.disabled = false;
+                    submitButton.innerHTML = originalText;
                 });
         });
     }
