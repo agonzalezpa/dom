@@ -22,7 +22,7 @@ $mensaje = $_POST['mensaje'] ?? $_POST['message'] ?? '';
 $invitados = $_POST['invitados'] ?? ''; // Será una cadena tipo "correo1@x.com,correo2@x.com"
 
 // Validación básica
-if (!$nombre || !$email || !$fecha || !$pais|| !$meetingType) {
+if (!$nombre || !$email || !$fecha || !$pais || !$meetingType) {
     echo json_encode([
         "success" => false,
         "message" => "Faltan datos obligatorios."
@@ -38,6 +38,97 @@ if ($conn->connect_error) {
         "message" => "Error de conexión a la base de datos."
     ]);
     exit;
+}
+
+function sendmailToclient($email, $nombre, $fecha, $language)
+{
+    // Mensaje según idioma
+    if ($language === 'en') {
+        $greeting = "Dear " . htmlspecialchars($nombre) . ",";
+        $intro = "We have received your appointment request for <strong>" . htmlspecialchars($fecha) . "</strong>.<br>We will be punctual to discover how we can help you and provide the best solution.";
+    } else {
+        $greeting = "Hola " . htmlspecialchars($nombre) . ",";
+        $intro = "Hemos recibido tu solicitud de cita para el <strong>" . htmlspecialchars($fecha) . "</strong>.<br>Estaremos puntuales para descubrir cómo podemos ayudarte y brindarte la mejor solución.";
+    }
+
+    $client_message = '
+<div id="editbody1" style="font-size: 10pt; font-family: Verdana,Geneva,sans-serif;">
+<div id="v1editbody1" style="font-size: 10pt; font-family: Verdana,Geneva,sans-serif;">
+<div id="v1v1editbody1" style="font-size: 10pt; font-family: Verdana,Geneva,sans-serif;">
+<div id="v1v1v1editbody1" style="font-size: 10pt; font-family: Verdana,Geneva,sans-serif;">
+<div id="v1v1v1v1editbody1" style="font-size: 10pt; font-family: Verdana,Geneva,sans-serif;">
+<div id="v1v1v1v1v1editbody1" style="font-size: 10pt; font-family: Verdana,Geneva,sans-serif;">
+<div style="font-size: 10pt; font-family: Verdana,Geneva,sans-serif;">
+<div style="font-size: 10pt; font-family: Verdana,Geneva,sans-serif;">
+<div class="v1v1v1v1v1v1v1v1email-wrapper">
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td align="center">
+<table class="v1v1v1v1v1v1v1v1email-container" style="max-width: 600px; background-color: #1e293b; border-radius: 16px; border: 1px solid #334155;" border="0" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td class="v1v1v1v1v1v1v1v1header" style="background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); background-color: #6366f1; padding: 30px 40px; text-align: center;">
+<div class="v1v1v1v1v1v1v1v1logo" style="font-size: 32px; font-weight: bold; color: white; margin: 0; padding: 0; line-height: 1.2;">DOM LLC</div>
+<div class="v1v1v1v1v1v1v1v1tagline" style="font-size: 14px; color: rgba(255,255,255,0.9); margin-top: 8px; font-weight: 300;">Soluciones Digitales Personalizadas</div>
+</td>
+</tr>
+<tr>
+<td class="v1v1v1v1v1v1v1v1content" style="padding: 40px; background-color: #1e293b;">
+<div class="v1v1v1v1v1v1v1v1greeting" style="font-size: 18px; font-weight: 500; color: #6366f1; margin-bottom: 25px;">' . $greeting . '</div>
+<div class="v1v1v1v1v1v1v1v1intro" style="font-size: 16px; line-height: 1.6; color: #cbd5e1; margin-bottom: 25px;">' . $intro . '</div>
+</td>
+</tr>
+<tr>
+<td class="v1v1v1v1v1v1v1v1footer" style="background-color: #0f172a; padding: 30px 40px; border-top: 1px solid #334155;">
+<table class="v1v1v1v1v1v1v1v1footer-table" style="width: 100%; border-collapse: collapse;" border="0" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td class="v1v1v1v1v1v1v1v1signature" style="color: #f1f5f9; font-size: 16px; vertical-align: top; padding-right: 20px;"><strong>Saludos cordiales,</strong><br /><strong style="color: #6366f1;">Adrián González</strong><br /><span style="color: #94a3b8;">CEO, DOM LLC</span></td>
+<td class="v1v1v1v1v1v1v1v1profile-section" style="vertical-align: top; text-align: right; width: 170px;">
+<table border="0" cellspacing="0" cellpadding="0" align="right">
+<tbody>
+<tr>
+<td>
+<div class="v1v1v1v1v1v1v1v1contact-info" style="text-align: left;"><a class="v1v1v1v1v1v1v1v1contact-item" style="color: #94a3b8; font-size: 14px; text-decoration: none; display: block; margin-bottom: 5px;" href="https://dom0125.com" target="_blank" rel="noopener noreferrer">🌐 dom0125.com</a> <a class="v1v1v1v1v1v1v1v1contact-item" style="color: #94a3b8; font-size: 14px; text-decoration: none; display: block; margin-bottom: 5px;" href="mailto:info@dom0125.com" rel="noreferrer">📧 info@dom0125.com</a> <a class="v1v1v1v1v1v1v1v1contact-item" style="color: #94a3b8; font-size: 14px; text-decoration: none; display: block; margin-bottom: 5px;" href="https://wa.me/+15793810079" target="_blank" rel="noopener noreferrer">📱 +1 (579) 381-0079</a>
+<p style="color: #94a3b8;">4315 Neely Ave, Midland Texas. United States</p>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+';
+
+    $client_subject = ($language === 'en')
+        ? "Thank you for your booking at DOM!"
+        : "¡Gracias por tu reserva en DOM!";
+
+    $client_headers  = "MIME-Version: 1.0\r\n";
+    $client_headers .= "Content-type: text/html; charset=UTF-8\r\n";
+    $client_headers .= "From: DOM <info@dom0125.com>\r\n";
+
+    mail($email, $client_subject, $client_message, $client_headers);
 }
 
 // Prepara y ejecuta la consulta
@@ -60,6 +151,7 @@ if ($stmt->execute()) {
     $headers .= "Cc: agonzalezpa0191@gmail.com\r\n"; // Agrega copias
     //$headers .= "Cc: odelkysi92@gmail.com, agonzalezpa0191@dgmail.com\r\n";
     mail($admin_email, $subject, $body, $headers);
+    sendmailToclient($email, $nombre, $fecha, $language);
 
     echo json_encode([
         "success" => true,
