@@ -797,7 +797,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (!form) return;
         const inputs = form.querySelectorAll('input, select');
         const submitButton = document.getElementById('bookingSubmit');
-       
+
         // Crea la instancia de Notyf (hazlo solo una vez)
         const notyf = new Notyf({
             duration: 4000,
@@ -820,7 +820,15 @@ document.addEventListener('DOMContentLoaded', function () {
                         tagName: 'i',
                         text: 'error'
                     }
-                }
+                },
+                {
+                    type: 'info',
+                    background: '#0099ff',
+                    icon: {
+                        className: 'material-icons',
+                        tagName: 'i',
+                        text: 'info'
+                    }
             ]
         });
 
@@ -854,7 +862,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 .then(res => res.json())
                 .then(data => {
                     if (data.success) {
-                         var textContent = currentLanguage === 'en'
+                        var textContent = currentLanguage === 'en'
                             ? 'Booking confirmed! We will send you a confirmation email shortly.'
                             : '¡Reserva confirmada! Te enviaremos un email de confirmación en breve.';
                         notyf.success(textContent);
