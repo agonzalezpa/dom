@@ -707,7 +707,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
 
-    function generateTimeSlots() {
+    function generateTimeSlotsOLD() {
         const timeSlotsContainer = document.getElementById('timeSlots');
         timeSlotsContainer.innerHTML = '';
 
@@ -740,6 +740,35 @@ document.addEventListener('DOMContentLoaded', function () {
 
             if (bookedTimes.includes(time)) {
                 slotElement.classList.add('disabled');
+            } else {
+                slotElement.addEventListener('click', () => selectTime(time, slotElement));
+            }
+            timeSlotsContainer.appendChild(slotElement);
+        });
+    }
+    function generateTimeSlots() {
+        const timeSlotsContainer = document.getElementById('timeSlots');
+        timeSlotsContainer.innerHTML = '';
+
+        // Usa la fecha de hoy si no hay fecha seleccionada
+        const baseDate = selectedDate || new Date();
+
+        timeSlots.forEach(time => {
+            const slotElement = document.createElement('div');
+            slotElement.classList.add('time-slot');
+            // Siempre muestra la hora local del usuario
+            slotElement.textContent = convertToLocalTime(baseDate, time);
+            if (selectedDate) {
+                // Si hay fecha seleccionada, verifica disponibilidad
+                const dateStr = selectedDate.toISOString().split('T')[0];
+                const bookedTimes = bookedSlots
+                    .filter(slot => slot.startsWith(dateStr))
+                    .map(slot => slot.split(' ')[1].slice(0, 5));
+                if (bookedTimes.includes(time)) {
+                    slotElement.classList.add('disabled');
+                } else {
+                    slotElement.addEventListener('click', () => selectTime(time, slotElement));
+                }
             } else {
                 slotElement.addEventListener('click', () => selectTime(time, slotElement));
             }
