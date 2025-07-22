@@ -1,4 +1,5 @@
 <?php
+header('Content-Type: application/json');
 // Configuración de la base de datos
 $db_host = 'localhost';
 $db_user = 'u750684196_domllc';
@@ -21,31 +22,43 @@ $mensaje = $_POST['mensaje'] ?? $_POST['message'] ?? '';
 
 // Validación básica
 if (!$nombre || !$email || !$fecha || !$pais) {
-    http_response_code(400);
-    echo "Faltan datos obligatorios.";
+    echo json_encode([
+        "success" => false,
+        "message" => "Faltan datos obligatorios."
+    ]);
     exit;
 }
 
 // Guarda en la base de datos
 $conn = new mysqli($db_host, $db_user, $db_pass, $db_name);
 if ($conn->connect_error) {
-    http_response_code(500);
-    echo "Error de conexión a la base de datos.";
+    echo json_encode([
+        "success" => false,
+        "message" => "Error de conexión a la base de datos."
+    ]);
     exit;
 }
 
 $stmt = $conn->prepare("INSERT INTO bookings (nombre, email, fecha,telefono, mensaje, pais,empresa,tipo_reunion,idioma) VALUES (?,?,?, ?, ?, ?, ?, ?, ?)");
 $stmt->bind_param("sssssssss", $nombre, $email, $fecha, $telefono, $mensaje, $pais, $empresa, $meetingType, $language);
-$stmt->execute();
+if ($stmt->execute()) {
+    // Envía notificación por correo
+    $subject = "Nueva reserva en el calendario";
+    $body = "Nombre: $nombre\nEmail: $email\nFecha: $fecha\nPais: $pais\nEmpresa: $empresa\nMensaje: $mensaje";
+    $headers = "From: info@dom0125.com\r\n";
+    $headers .= "Cc: agonzalezpa0191@gmail.com\r\n"; // Agrega copias
+    //$headers .= "Cc: odelkysi92@gmail.com, agonzalezpa0191@dgmail.com\r\n";
+    mail($admin_email, $subject, $body, $headers);
+
+    echo json_encode([
+        "success" => true,
+        "message" => "Reserva recibida correctamente."
+    ]);
+} else {
+    echo json_encode([
+        "success" => false,
+        "message" => "Error al guardar la reserva."
+    ]);
+}
 $stmt->close();
 $conn->close();
-
-// Envía notificación por correo
-$subject = "Nueva reserva en el calendario";
-$body = "Nombre: $nombre\nEmail: $email\nFecha: $fecha\nPais: $pais\nEmpresa: $empresa\nMensaje: $mensaje";
-$headers = "From: info@dom0125.com\r\n";
-$headers .= "Cc: agonzalezpa0191@gmail.com\r\n"; // Agrega copias
-//$headers .= "Cc: odelkysi92@gmail.com, agonzalezpa0191@dgmail.com\r\n";
-mail($admin_email, $subject, $body, $headers);
-
-echo "Reserva recibida correctamente.";
