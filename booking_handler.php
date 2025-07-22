@@ -31,8 +31,8 @@ if ($conn->connect_error) {
     exit;
 }
 
-$stmt = $conn->prepare("INSERT INTO bookings (nombre, email, fecha, mensaje) VALUES (?, ?, ?, ?)");
-$stmt->bind_param("ssss", $nombre, $email, $fecha, $mensaje);
+$stmt = $conn->prepare("INSERT INTO bookings (nombre, email, fecha, mensaje, pais,empresa) VALUES (?, ?, ?, ?, ?, ?)");
+$stmt->bind_param("ssssss", $nombre, $email, $fecha, $mensaje, $pais, $empresa);
 $stmt->execute();
 $stmt->close();
 $conn->close();
