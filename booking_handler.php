@@ -14,6 +14,9 @@ $email = $_POST['email'] ?? '';
 $pais = $_POST['pais'] ?? '';
 $empresa = $_POST['empresa'] ?? '';
 $fecha = $_POST['fecha'] ?? '';
+$telefono = $_POST['phone'] ?? '';
+$meetingType = $_POST['meetingType'] ?? '';
+$language = $_POST['language'] ?? '';
 $mensaje = $_POST['mensaje'] ?? $_POST['message'] ?? '';
 
 // Validación básica
@@ -31,8 +34,8 @@ if ($conn->connect_error) {
     exit;
 }
 
-$stmt = $conn->prepare("INSERT INTO bookings (nombre, email, fecha, mensaje, pais,empresa) VALUES (?, ?, ?, ?, ?, ?)");
-$stmt->bind_param("ssssss", $nombre, $email, $fecha, $mensaje, $pais, $empresa);
+$stmt = $conn->prepare("INSERT INTO bookings (nombre, email, fecha,telefono, mensaje, pais,empresa,tipo_reunion,idioma) VALUES (?,?,?, ?, ?, ?, ?, ?, ?)");
+$stmt->bind_param("sssssssss", $nombre, $email, $fecha, $telefono, $mensaje, $pais, $empresa, $meetingType, $language);
 $stmt->execute();
 $stmt->close();
 $conn->close();
