@@ -19,9 +19,10 @@ $telefono = $_POST['phone'] ?? '';
 $meetingType = $_POST['meetingType'] ?? '';
 $language = $_POST['language'] ?? '';
 $mensaje = $_POST['mensaje'] ?? $_POST['message'] ?? '';
+$invitados = $_POST['invitados'] ?? ''; // Será una cadena tipo "correo1@x.com,correo2@x.com"
 
 // Validación básica
-if (!$nombre || !$email || !$fecha || !$pais) {
+if (!$nombre || !$email || !$fecha || !$pais|| !$meetingType) {
     echo json_encode([
         "success" => false,
         "message" => "Faltan datos obligatorios."
@@ -39,12 +40,22 @@ if ($conn->connect_error) {
     exit;
 }
 
-$stmt = $conn->prepare("INSERT INTO bookings (nombre, email, fecha,telefono, mensaje, pais,empresa,tipo_reunion,idioma) VALUES (?,?,?, ?, ?, ?, ?, ?, ?)");
-$stmt->bind_param("sssssssss", $nombre, $email, $fecha, $telefono, $mensaje, $pais, $empresa, $meetingType, $language);
+// Prepara y ejecuta la consulta
+$stmt = $conn->prepare("INSERT INTO bookings (nombre, email, fecha, telefono, mensaje, pais, empresa, tipo_reunion, idioma, invitados) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+$stmt->bind_param("ssssssssss", $nombre, $email, $fecha, $telefono, $mensaje, $pais, $empresa, $meetingType, $language, $invitados);
 if ($stmt->execute()) {
     // Envía notificación por correo
-    $subject = "Nueva reserva en el calendario";
-    $body = "Nombre: $nombre\nEmail: $email\nFecha: $fecha\nPais: $pais\nEmpresa: $empresa\nMensaje: $mensaje";
+    $subject = "NUEVA RESERVA DE CITA";
+    $body = "Nombre: " . ($nombre ?: "-") . "\n";
+    $body .= "Email: " . ($email ?: "-") . "\n";
+    $body .= "Fecha: " . ($fecha ?: "-") . "\n";
+    $body .= "Pais: " . ($pais ?: "-") . "\n";
+    $body .= "Empresa: " . ($empresa ?: "-") . "\n";
+    $body .= "Teléfono: " . ($telefono ?: "-") . "\n";
+    $body .= "Tipo de reunión: " . ($meetingType ?: "-") . "\n";
+    $body .= "Idioma: " . ($language ?: "-") . "\n";
+    $body .= "Invitados: " . ($invitados ?: "-") . "\n";
+    $body .= "Mensaje: " . ($mensaje ?: "-");
     $headers = "From: info@dom0125.com\r\n";
     $headers .= "Cc: agonzalezpa0191@gmail.com\r\n"; // Agrega copias
     //$headers .= "Cc: odelkysi92@gmail.com, agonzalezpa0191@dgmail.com\r\n";

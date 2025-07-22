@@ -775,8 +775,8 @@ document.addEventListener('DOMContentLoaded', function () {
         // Update summary
         updateBookingSummary();
         generateTimeSlots();
-      
-        
+
+
     }
 
     function selectTime(time, element) {
@@ -916,6 +916,17 @@ document.addEventListener('DOMContentLoaded', function () {
                 formData.append('fecha', fecha);
             }
             formData.append('language', currentLanguage);
+            // Procesar invitados
+            const guestInputs = form.querySelectorAll('.guest-email-input');
+            const guestEmails = [];
+            guestInputs.forEach(input => {
+                if (input.value.trim()) {
+                    guestEmails.push(input.value.trim());
+                }
+            });
+            // Elimina los campos previos y agrega uno solo con los correos separados por coma
+            formData.delete('guestEmails[]');
+            formData.append('invitados', guestEmails.join(','));
 
             fetch('booking_handler.php', {
                 method: 'POST',
@@ -964,10 +975,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Initialize calendar when page loads
-    /* if (document.getElementById('reserva-cita')) {
-         initializeCalendar();
-     }*/
+
     if (document.getElementById('reserva-cita')) {
         fetchBookedSlots(initializeCalendar);
     }

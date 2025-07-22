@@ -120,16 +120,16 @@
                     <h4 data-lang="booking-form-title">Detalles de la Reunión</h4>
                     <form id="bookingForm">
                         <div class="form-group">
-                            <label for="bookingName" data-lang="booking-name">Nombre</label>
+                            <label for="bookingName" data-lang="booking-name">Nombre*</label>
                             <input type="text" id="bookingName" name="name" required>
                         </div>
                         <div class="form-group">
                             <label for="bookingEmpresa" data-lang="booking-empresa">Empresa/ Negocio/
                                 Institución</label>
-                            <input type="text" id="bookingEmpresa" name="empresa" required>
+                            <input type="text" id="bookingEmpresa" name="empresa">
                         </div>
                         <div class="form-group">
-                            <label for="bookingEmail" data-lang="booking-email">Email</label>
+                            <label for="bookingEmail" data-lang="booking-email">Email*</label>
                             <input type="email" id="bookingEmail" name="email" required>
                         </div>
                         <div class="form-group">
@@ -137,7 +137,7 @@
                             <input type="tel" id="bookingPhone" name="phone">
                         </div>
                         <div class="form-group">
-                            <label for="bookingCountry" data-lang="booking-country">País</label>
+                            <label for="bookingCountry" data-lang="booking-country">País*</label>
                             <select id="bookingCountry" name="pais" required>
                                 <option value="" data-lang="select-country">Selecciona tu país</option>
                                 <option value="Afganistán">Afganistán</option>
@@ -338,13 +338,15 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="meetingType" data-lang="meeting-type">Tipo de Reunión</label>
+                            <label for="meetingType" data-lang="meeting-type">Propósito de la reunión*</label>
                             <select id="meetingType" name="meetingType" required>
                                 <option value="" data-lang="select-type">Selecciona el tipo</option>
-                                <option value="consultation" data-lang="consultation">Consulta General</option>
-                                <option value="project" data-lang="project-discussion">Discusión de Proyecto</option>
-                                <option value="demo" data-lang="demo">Demostración de Producto</option>
-                                <option value="support" data-lang="technical-support">Soporte Técnico</option>
+                                <option value="Consulta General" data-lang="consultation">Consulta General</option>
+                                <option value="Software personalizado" data-lang="project-discussion">Software personalizado</option>
+                                <option value="Redes sociales" data-lang="social media">Redes sociales</option>
+                                <option value="Página web" data-lang="paginas webst">Página web</option>
+                                <option value="Automatización con IA" data-lang="automatizaciones">Automatización con IA</option>
+                                <option value="Diseño gráfico" data-lang="automatizaciones">Diseño gráfico</option>
                             </select>
                         </div>
                         <div class="form-group">
