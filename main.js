@@ -625,7 +625,16 @@ document.addEventListener('DOMContentLoaded', function () {
         '09:00', '09:30', '10:00', '10:30', '11:00', '11:30',
         '14:00', '14:30'
     ];
+    let bookedSlots = []; // Aquí se guardarán las reservas ocupadas
 
+    function fetchBookedSlots(callback) {
+        fetch('get_bookings.php')
+            .then(res => res.json())
+            .then(data => {
+                bookedSlots = data; // ["2025-07-24 09:00:00", ...]
+                if (callback) callback();
+            });
+    }
     function initializeCalendar() {
         generateCalendar();
         generateTimeSlots();
@@ -667,6 +676,7 @@ document.addEventListener('DOMContentLoaded', function () {
             dayElement.textContent = day;
 
             const dayDate = new Date(currentCalendarDate.getFullYear(), currentCalendarDate.getMonth(), day);
+            const dateStr = dayDate.toISOString().split('T')[0];
 
             // Mark today
             if (dayDate.toDateString() === today.toDateString()) {
@@ -677,14 +687,23 @@ document.addEventListener('DOMContentLoaded', function () {
             if (dayDate < today || dayDate.getDay() === 0 || dayDate.getDay() === 6) {
                 dayElement.classList.add('disabled');
             } else {
-                dayElement.addEventListener('click', () => selectDate(dayDate, dayElement));
+                // Verifica si todas las horas de ese día están ocupadas
+                const bookedTimes = bookedSlots
+                    .filter(slot => slot.startsWith(dateStr))
+                    .map(slot => slot.split(' ')[1].slice(0, 5));
+                const allBooked = timeSlots.every(time => bookedTimes.includes(time));
+                if (allBooked) {
+                    dayElement.classList.add('disabled');
+                } else {
+                    dayElement.addEventListener('click', () => selectDate(dayDate, dayElement));
+                }
             }
 
             calendarGrid.appendChild(dayElement);
         }
     }
 
-    function generateTimeSlots() {
+    /*function generateTimeSlots() {
         const timeSlotsContainer = document.getElementById('timeSlots');
         timeSlotsContainer.innerHTML = '';
 
@@ -693,6 +712,43 @@ document.addEventListener('DOMContentLoaded', function () {
             slotElement.classList.add('time-slot');
             slotElement.textContent = time;
             slotElement.addEventListener('click', () => selectTime(time, slotElement));
+            timeSlotsContainer.appendChild(slotElement);
+        });
+    }*/
+    function generateTimeSlots() {
+        const timeSlotsContainer = document.getElementById('timeSlots');
+        timeSlotsContainer.innerHTML = '';
+
+        // Si no hay fecha seleccionada, muestra todos habilitados
+        if (!selectedDate) {
+            timeSlots.forEach(time => {
+                const slotElement = document.createElement('div');
+                slotElement.classList.add('time-slot');
+                slotElement.textContent = time;
+                slotElement.addEventListener('click', () => selectTime(time, slotElement));
+                timeSlotsContainer.appendChild(slotElement);
+            });
+            return;
+        }
+
+        // Formato de la fecha seleccionada: YYYY-MM-DD
+        const dateStr = selectedDate.toISOString().split('T')[0];
+
+        // Obtén las horas ocupadas para esa fecha
+        const bookedTimes = bookedSlots
+            .filter(slot => slot.startsWith(dateStr))
+            .map(slot => slot.split(' ')[1].slice(0, 5)); // ["09:00", "10:30"]
+
+        timeSlots.forEach(time => {
+            const slotElement = document.createElement('div');
+            slotElement.classList.add('time-slot');
+            slotElement.textContent = time;
+
+            if (bookedTimes.includes(time)) {
+                slotElement.classList.add('disabled');
+            } else {
+                slotElement.addEventListener('click', () => selectTime(time, slotElement));
+            }
             timeSlotsContainer.appendChild(slotElement);
         });
     }
@@ -718,11 +774,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Update summary
         updateBookingSummary();
+        generateTimeSlots();
 
         // Enable time slots
         document.querySelectorAll('.time-slot').forEach(slot => {
             slot.classList.remove('disabled');
         });
+        
     }
 
     function selectTime(time, element) {
@@ -805,34 +863,34 @@ document.addEventListener('DOMContentLoaded', function () {
             duration: 4000,
             position: { x: 'right', y: 'top' },
             types: [
-            {
-                type: 'success',
-                background: '#00FF88',
-                className: 'notyf-success-custom',
-                icon: {
-                className: 'material-icons',
-                tagName: 'i',
-                text: 'check_circle'
+                {
+                    type: 'success',
+                    background: '#00FF88',
+                    className: 'notyf-success-custom',
+                    icon: {
+                        className: 'material-icons',
+                        tagName: 'i',
+                        text: 'check_circle'
+                    }
+                },
+                {
+                    type: 'error',
+                    background: '#ff0033',
+                    icon: {
+                        className: 'material-icons',
+                        tagName: 'i',
+                        text: 'error'
+                    }
+                },
+                {
+                    type: 'info',
+                    background: '#0099ff',
+                    icon: {
+                        className: 'material-icons',
+                        tagName: 'i',
+                        text: 'info'
+                    }
                 }
-            },
-            {
-                type: 'error',
-                background: '#ff0033',
-                icon: {
-                className: 'material-icons',
-                tagName: 'i',
-                text: 'error'
-                }
-            },
-            {
-                type: 'info',
-                background: '#0099ff',
-                icon: {
-                className: 'material-icons',
-                tagName: 'i',
-                text: 'info'
-                }
-            }
             ]
         });
 
@@ -911,8 +969,11 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Initialize calendar when page loads
+    /* if (document.getElementById('reserva-cita')) {
+         initializeCalendar();
+     }*/
     if (document.getElementById('reserva-cita')) {
-        initializeCalendar();
+        fetchBookedSlots(initializeCalendar);
     }
 
 });
