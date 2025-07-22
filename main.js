@@ -805,36 +805,45 @@ document.addEventListener('DOMContentLoaded', function () {
             duration: 4000,
             position: { x: 'right', y: 'top' },
             types: [
-                {
-                    type: 'success',
-                    background: '#00FF88',
-                    icon: {
-                        className: 'material-icons',
-                        tagName: 'i',
-                        text: 'check_circle'
-                    }
-                },
-                {
-                    type: 'error',
-                    background: '#ff0033',
-                    icon: {
-                        className: 'material-icons',
-                        tagName: 'i',
-                        text: 'error'
-                    }
-                },
-                {
-                    type: 'info',
-                    background: '#0099ff',
-                    icon: {
-                        className: 'material-icons',
-                        tagName: 'i',
-                        text: 'info'
-                    }
+            {
+                type: 'success',
+                background: '#00FF88',
+                className: 'notyf-success-custom',
+                icon: {
+                className: 'material-icons',
+                tagName: 'i',
+                text: 'check_circle'
                 }
-
+            },
+            {
+                type: 'error',
+                background: '#ff0033',
+                icon: {
+                className: 'material-icons',
+                tagName: 'i',
+                text: 'error'
+                }
+            },
+            {
+                type: 'info',
+                background: '#0099ff',
+                icon: {
+                className: 'material-icons',
+                tagName: 'i',
+                text: 'info'
+                }
+            }
             ]
         });
+
+        // Cambia el color del texto para notificaciones de éxito
+        const style = document.createElement('style');
+        style.innerHTML = `
+            .notyf-success-custom .notyf__message {
+            color: #1b3a2b !important;
+            }
+        `;
+        document.head.appendChild(style);
 
         inputs.forEach(input => {
             input.addEventListener('input', updateSubmitButton);
