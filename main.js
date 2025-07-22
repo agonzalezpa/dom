@@ -611,6 +611,7 @@ document.addEventListener('DOMContentLoaded', function () {
     let selectedDate = null;
     let selectedTime = null;
     let currentCalendarDate = new Date();
+    const COMPANY_TIMEZONE = "America/Chicago";
 
     const monthNames = {
         es: [
@@ -705,18 +706,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    /*function generateTimeSlots() {
-        const timeSlotsContainer = document.getElementById('timeSlots');
-        timeSlotsContainer.innerHTML = '';
 
-        timeSlots.forEach(time => {
-            const slotElement = document.createElement('div');
-            slotElement.classList.add('time-slot');
-            slotElement.textContent = time;
-            slotElement.addEventListener('click', () => selectTime(time, slotElement));
-            timeSlotsContainer.appendChild(slotElement);
-        });
-    }*/
     function generateTimeSlots() {
         const timeSlotsContainer = document.getElementById('timeSlots');
         timeSlotsContainer.innerHTML = '';
@@ -744,7 +734,9 @@ document.addEventListener('DOMContentLoaded', function () {
         timeSlots.forEach(time => {
             const slotElement = document.createElement('div');
             slotElement.classList.add('time-slot');
-            slotElement.textContent = time;
+            //slotElement.textContent = time;
+            // Muestra la hora local del usuario
+            slotElement.textContent = convertToLocalTime(selectedDate, time);
 
             if (bookedTimes.includes(time)) {
                 slotElement.classList.add('disabled');
@@ -753,6 +745,27 @@ document.addEventListener('DOMContentLoaded', function () {
             }
             timeSlotsContainer.appendChild(slotElement);
         });
+    }
+    // Función para convertir la hora de la empresa a la hora local del usuario
+    function convertToLocalTime(dateObj, timeStr) {
+        // dateObj: Date del día seleccionado (en local)
+        // timeStr: "HH:MM" en horario de la empresa
+        if (!dateObj) return timeStr;
+        // Crea una fecha en la zona de la empresa
+        const [hour, minute] = timeStr.split(':');
+        // Usa luxon para facilitar la conversión
+        const dt = luxon.DateTime.fromObject(
+            {
+                year: dateObj.getFullYear(),
+                month: dateObj.getMonth() + 1,
+                day: dateObj.getDate(),
+                hour: parseInt(hour),
+                minute: parseInt(minute)
+            },
+            { zone: COMPANY_TIMEZONE }
+        );
+        // Convierte a la zona local del navegador
+        return dt.setZone(Intl.DateTimeFormat().resolvedOptions().timeZone).toLocaleString(luxon.DateTime.TIME_SIMPLE);
     }
 
     function selectDate(date, element) {
@@ -915,9 +928,20 @@ document.addEventListener('DOMContentLoaded', function () {
             // Prepare form data
             const formData = new FormData(form);
             if (selectedDate && selectedTime) {
-                // Combina fecha y hora en formato MySQL DATETIME
-                const dateStr = selectedDate.toISOString().split('T')[0];
-                const fecha = `${dateStr} ${selectedTime}:00`;
+                // Usa Luxon para crear la fecha en la zona de la empresa
+                const [hour, minute] = selectedTime.split(':');
+                const dt = luxon.DateTime.fromObject(
+                    {
+                        year: selectedDate.getFullYear(),
+                        month: selectedDate.getMonth() + 1,
+                        day: selectedDate.getDate(),
+                        hour: parseInt(hour),
+                        minute: parseInt(minute)
+                    },
+                    { zone: COMPANY_TIMEZONE }
+                );
+                // Formato MySQL DATETIME en la zona de la empresa
+                const fecha = dt.toFormat('yyyy-LL-dd HH:mm');
                 formData.append('fecha', fecha);
             }
             formData.append('language', currentLanguage);
