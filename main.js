@@ -897,22 +897,13 @@ document.addEventListener('DOMContentLoaded', function () {
                     }
                 })
                 .catch(() => {
+
                     notyf.open({
                         type: 'error',
                         message: currentLanguage === 'en'
                             ? 'There was an error sending your booking. Please try again.'
                             : 'Hubo un error al enviar tu reserva. Intenta de nuevo.'
                     });
-                });
-        });
-    }
-
-    // Initialize calendar when page loads
-    if (document.getElementById('reserva-cita')) {
-        initializeCalendar();
-    }
-                        });
-                        
                 });
         });
     }
