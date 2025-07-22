@@ -829,6 +829,8 @@ document.addEventListener('DOMContentLoaded', function () {
                         tagName: 'i',
                         text: 'info'
                     }
+                }
+
             ]
         });
 
