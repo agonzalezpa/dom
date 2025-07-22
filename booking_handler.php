@@ -44,7 +44,7 @@ $conn->close();
 $subject = "Nueva reserva en el calendario";
 $body = "Nombre: $nombre\nEmail: $email\nFecha: $fecha\nPais: $pais\nEmpresa: $empresa\nMensaje: $mensaje";
 $headers = "From: info@dom0125.com\r\n";
-$headers .= "Cc: agonzalezpa0191@dgmail.com\r\n"; // Agrega copias
+$headers .= "Cc: agonzalezpa0191@gmail.com\r\n"; // Agrega copias
 //$headers .= "Cc: odelkysi92@gmail.com, agonzalezpa0191@dgmail.com\r\n";
 mail($admin_email, $subject, $body, $headers);
 
