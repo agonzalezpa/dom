@@ -775,11 +775,7 @@ document.addEventListener('DOMContentLoaded', function () {
         // Update summary
         updateBookingSummary();
         generateTimeSlots();
-
-        // Enable time slots
-       /* document.querySelectorAll('.time-slot').forEach(slot => {
-            slot.classList.remove('disabled');
-        });*/
+      
         
     }
 
