@@ -767,13 +767,13 @@ document.addEventListener('DOMContentLoaded', function () {
     function updateSubmitButton() {
         const submitButton = document.getElementById('bookingSubmit');
         const nameInput = document.getElementById('bookingName');
-        const empresaImput = document.getElementById('bookingEmpresa');
+        const empresaInput = document.getElementById('bookingEmpresa');
         const emailInput = document.getElementById('bookingEmail');
         const meetingTypeSelect = document.getElementById('meetingType');
 
         const isFormValid = selectedDate && selectedTime &&
             nameInput.value.trim() &&
-            empresaImput.value.trim() &&
+            empresaInput.value.trim() &&
             emailInput.value.trim() &&
             meetingTypeSelect.value;
 
@@ -794,7 +794,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function setupBookingForm() {
         const form = document.getElementById('bookingForm');
+        if (!form) return;
         const inputs = form.querySelectorAll('input, select');
+        const submitButton = document.getElementById('bookingSubmit');
+        const responseMsg = document.getElementById('bookingResponse');
 
         inputs.forEach(input => {
             input.addEventListener('input', updateSubmitButton);
@@ -804,22 +807,56 @@ document.addEventListener('DOMContentLoaded', function () {
         form.addEventListener('submit', (e) => {
             e.preventDefault();
 
-            // Here you would normally send the booking data to your server
+            // Prepare form data
+            const formData = new FormData(form);
+            if (selectedDate) {
+                formData.append('date', selectedDate.toISOString().split('T')[0]);
+            }
+            if (selectedTime) {
+                formData.append('time', selectedTime);
+            }
+            formData.append('language', currentLanguage);
 
-            alert(currentLanguage === 'en' ?
-                'Booking confirmed! We will send you a confirmation email shortly.' :
-                '¡Reserva confirmada! Te enviaremos un email de confirmación en breve.'
-            );
+            // Show sending message
+            responseMsg.textContent = currentLanguage === 'en'
+                ? 'Sending reservation...'
+                : 'Enviando reserva...';
+            responseMsg.className = '';
 
-            // Reset form
-            form.reset();
-            selectedDate = null;
-            selectedTime = null;
-            document.querySelectorAll('.selected').forEach(el => el.classList.remove('selected'));
-            document.getElementById('selectedDate').textContent =
-                currentLanguage === 'en' ? 'Select a date' : 'Selecciona una fecha';
-            updateBookingSummary();
-            updateSubmitButton();
+            fetch('booking_handler.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    responseMsg.textContent = currentLanguage === 'en'
+                        ? 'Booking confirmed! We will send you a confirmation email shortly.'
+                        : '¡Reserva confirmada! Te enviaremos un email de confirmación en breve.';
+                    responseMsg.className = 'success';
+
+                    // Reset form and UI
+                    form.reset();
+                    selectedDate = null;
+                    selectedTime = null;
+                    document.querySelectorAll('.selected').forEach(el => el.classList.remove('selected'));
+                    document.getElementById('selectedDate').textContent =
+                        currentLanguage === 'en' ? 'Select a date' : 'Selecciona una fecha';
+                    updateBookingSummary();
+                    updateSubmitButton();
+                } else {
+                    responseMsg.textContent = data.message || (currentLanguage === 'en'
+                        ? 'There was an error saving your booking. Please try again.'
+                        : 'Hubo un error al guardar tu reserva. Intenta de nuevo.');
+                    responseMsg.className = 'error';
+                }
+            })
+            .catch(() => {
+                responseMsg.textContent = currentLanguage === 'en'
+                    ? 'There was an error sending your booking. Please try again.'
+                    : 'Hubo un error al enviar tu reserva. Intenta de nuevo.';
+                responseMsg.className = 'error';
+            });
         });
     }
 
