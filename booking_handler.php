@@ -145,8 +145,9 @@ if ($stmt->execute()) {
     $body .= "Invitados: " . ($invitados ?: "-") . "\n";
     $body .= "Mensaje: " . ($mensaje ?: "-");
     $headers = "From: info@dom0125.com\r\n";
-    $headers .= "Cc: agonzalezpa0191@gmail.com\r\n"; // Agrega copias
-    //$headers .= "Cc: odelkysi92@gmail.com, agonzalezpa0191@dgmail.com\r\n";
+    //$headers .= "Cc: agonzalezpa0191@gmail.com\r\n"; 
+    // Agrega copias
+    $headers .= "Cc: odelkysi92@gmail.com, agonzalezpa0191@dgmail.com\r\n";
     mail($admin_email, $subject, $body, $headers);
     sendmailToclient($email, $nombre, $fechaCliente, $language, $timezonecliente);
 
