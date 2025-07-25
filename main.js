@@ -372,8 +372,8 @@ document.addEventListener('DOMContentLoaded', function () {
             'nav-contact': 'Contacto',
 
             // Hero
-            'hero-title-1': 'Desarrollo de Software y paginas webs:',
-            'hero-title-2': 'a la Medida',
+            'hero-title-1': 'Desarrollo de Software',
+            'hero-title-2': 'y paginas webs',
             'hero-subtitle': 'Somos un equipo multidisciplinario de expertos en tecnología, diseño y estrategia empresarial, dedicados a ofrecer soluciones que impulsen la innovación y la eficiencia en tu negocio',
             'eye-hover-text': 'Vemos más allá',
             'hero-cta': 'Haz crecer tu negocio',
