@@ -29,7 +29,7 @@
     <header>
         <div class="container">
             <div class="logo">
-                <img src="logo.png" alt="DOM Logo" width="120">
+                <a href="https://dom0125.com"><img src="logo.png" alt="DOM Logo" width="120"></a>
             </div>
             <nav>
                 <ul class="desktop-menu">
@@ -591,7 +591,7 @@
                 document.querySelectorAll('#es-btn, #es-btn-mobile').forEach(b => b.classList.remove('active'));
             });
         }); 
-        
+
 
         document.getElementById('userTimezone').textContent = Intl.DateTimeFormat().resolvedOptions().timeZone;
         fetch('counter.php')
