@@ -856,7 +856,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         if (selectedTime) {
-            summaryTime.textContent = selectedTime;
+            summaryTime.textContent = convertToLocalTime(selectedDate, selectedTime);
         } else {
             summaryTime.textContent = '-';
         }
