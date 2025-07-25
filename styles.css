@@ -10,6 +10,7 @@
     --transition: all 0.3s ease;
     --box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.3);
 }
+
 /*section {
     overflow-x: hidden;
 }*/
@@ -1168,7 +1169,7 @@ footer {
     .mobile-menu-toggle {
         display: flex;
     }
-    
+
 
     .hero-content h1 {
         font-size: 2.5rem;
@@ -1186,8 +1187,13 @@ footer {
         font-size: 2rem;
     }
 
-   .contact-content {
-        grid-template-columns: 1fr; /* Esto cambia el layout a una sola columna */
+    .contact-content {
+        grid-template-columns: 1fr;
+        /* Esto cambia el layout a una sola columna */
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
     }
 
     .footer-content {
@@ -1200,8 +1206,10 @@ footer {
         gap: 15px;
         text-align: center;
     }
+
     #hero {
-        padding-top: 100px; /* Ajusta este valor si es necesario */
+        padding-top: 100px;
+        /* Ajusta este valor si es necesario */
     }
 }
 
@@ -1600,6 +1608,7 @@ footer {
     gap: 8px;
     margin-bottom: 8px;
 }
+
 .guest-email-input {
     padding: 10px 12px;
     border: 1px solid #ccd6f6;
@@ -1608,10 +1617,12 @@ footer {
     background: #f7fafd;
     transition: border 0.2s;
 }
+
 .guest-email-input:focus {
     border-color: #00FF88;
     outline: none;
 }
+
 .add-guest-email-btn {
     background: #00FF88;
     color: #0A192F;
@@ -1624,6 +1635,7 @@ footer {
     margin-top: 4px;
     transition: background 0.2s;
 }
+
 .add-guest-email-btn:disabled {
     background: #b2f5d6;
     color: #888;
