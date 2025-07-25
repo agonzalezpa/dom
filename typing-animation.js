@@ -11,12 +11,12 @@ function setupHeroTitle(language) {
   const heroTitle = document.querySelector('#hero h1');
   const translations = {
     es: {
-      'hero-title-1': 'Desarrollo de Software y paginas webs:',
-      'hero-title-2': 'Software que Transforma'
+      'hero-title-1': 'Desarrollo de Software',
+      'hero-title-2': 'y paginas webs'
     },
     en: {
-      'hero-title-1': 'Beyond Boundaries',
-      'hero-title-2': 'Software That Transforms'
+      'hero-title-1': 'Custom Software and',
+      'hero-title-2': 'Website Development'
     }
   };
 

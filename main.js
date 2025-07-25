@@ -456,8 +456,8 @@ document.addEventListener('DOMContentLoaded', function () {
             'nav-contact': 'Contact',
 
             // Hero
-            'hero-title-1': 'Custom Software and Website :',
-            'hero-title-2': 'Development',
+            'hero-title-1': 'Custom Software and ',
+            'hero-title-2': 'Website Development',
             'hero-subtitle': 'We are a multidisciplinary team of experts in technology, design and business strategy, dedicated to delivering solutions that drive innovation and efficiency in your business',
             'hero-cta': 'Grow your business',
             'eye-hover-text': 'We see beyond',
