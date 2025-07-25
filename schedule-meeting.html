@@ -590,7 +590,8 @@
                 document.querySelectorAll('#en-btn, #en-btn-mobile').forEach(b => b.classList.add('active'));
                 document.querySelectorAll('#es-btn, #es-btn-mobile').forEach(b => b.classList.remove('active'));
             });
-        });
+        }); 
+        
 
         document.getElementById('userTimezone').textContent = Intl.DateTimeFormat().resolvedOptions().timeZone;
         fetch('counter.php')
