@@ -11,7 +11,7 @@ function setupHeroTitle(language) {
   const heroTitle = document.querySelector('#hero h1');
   const translations = {
     es: {
-      'hero-title-1': 'Redefiniendo los límites:',
+      'hero-title-1': 'Desarrollo de Software y paginas webs:',
       'hero-title-2': 'Software que Transforma'
     },
     en: {

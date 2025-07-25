@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Set up the typing animation
   let titleParts = [
-    '<span data-lang="hero-title-1">Redefiniendo los límites:</span>',
+    '<span data-lang="hero-title-1">Desarrollo de Software y paginas webs:</span>',
     '<span class="highlight" data-lang="hero-title-2">Software que Potencia y Transforma</span>'
   ];
 

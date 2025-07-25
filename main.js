@@ -372,8 +372,8 @@ document.addEventListener('DOMContentLoaded', function () {
             'nav-contact': 'Contacto',
 
             // Hero
-            'hero-title-1': 'Redefiniendo los Límites:',
-            'hero-title-2': 'Software que Potencia y Transforma',
+            'hero-title-1': 'Desarrollo de Software y paginas webs:',
+            'hero-title-2': 'a la Medida',
             'hero-subtitle': 'Somos un equipo multidisciplinario de expertos en tecnología, diseño y estrategia empresarial, dedicados a ofrecer soluciones que impulsen la innovación y la eficiencia en tu negocio',
             'eye-hover-text': 'Vemos más allá',
             'hero-cta': 'Haz crecer tu negocio',
@@ -456,8 +456,8 @@ document.addEventListener('DOMContentLoaded', function () {
             'nav-contact': 'Contact',
 
             // Hero
-            'hero-title-1': 'Redefining Boundaries',
-            'hero-title-2': 'Software That Empowers',
+            'hero-title-1': 'Custom Software and Website :',
+            'hero-title-2': 'Development',
             'hero-subtitle': 'We are a multidisciplinary team of experts in technology, design and business strategy, dedicated to delivering solutions that drive innovation and efficiency in your business',
             'hero-cta': 'Grow your business',
             'eye-hover-text': 'We see beyond',
